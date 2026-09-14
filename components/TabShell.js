@@ -18,12 +18,14 @@ export default function TabShell({ title, crumb, children, hideMobileNav = false
       <div className="flex min-w-0 flex-1 flex-col">
         {title && (
           <header className="hidden shrink-0 items-center gap-2 border-b border-line px-10 py-6 lg:flex">
-            {crumb && <span className="text-[15px] font-medium text-muted">{crumb}</span>}
-            <h1 className="text-[20px] font-bold text-navy-deep">{title}</h1>
+            {crumb && <span className="text-[16px] font-medium text-muted">{crumb}</span>}
+            <h1 className="text-[23px] font-bold text-navy-deep">{title}</h1>
           </header>
         )}
         <div className="flex flex-1 flex-col lg:items-start lg:bg-[#eef2fb]">
-          <div className="flex w-full flex-1 flex-col lg:mx-auto lg:max-w-none lg:px-10 lg:py-8">
+          {/* lg:max-w — 큰 모니터에서 사진/카드가 가장자리까지 늘어나 지나치게
+              커 보이지 않도록 프로토타입 캔버스 폭과 비슷한 값으로 제한합니다. */}
+          <div className="flex w-full flex-1 flex-col lg:mx-auto lg:max-w-[1180px] lg:px-10 lg:py-8">
             {children}
           </div>
         </div>

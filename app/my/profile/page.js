@@ -163,7 +163,7 @@ export default function ProfilePage() {
               <label className="mb-2 block text-[14px] font-bold text-navy-deep">이메일</label>
               <input
                 disabled
-                className="w-full rounded-2xl border border-line bg-[#eef2fb] px-5 py-3.5 text-[14.5px] text-muted"
+                className="w-full rounded-2xl border border-[#c7ccd8] bg-[#dfe2e8] px-5 py-3.5 text-[14.5px] text-muted"
               />
             </div>
 

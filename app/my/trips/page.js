@@ -106,7 +106,7 @@ export default function MyTripsPage() {
 
               {/* 데스크톱: 표지 사진 + "새 일정 만들기" 카드가 함께 있는 그리드
                   (프로토타입 "PC 내 여행일정") */}
-              <div className="hidden grid-cols-4 gap-6 pb-10 lg:mt-4 lg:grid">
+              <div className="hidden grid-cols-5 gap-5 pb-10 lg:mt-4 lg:grid">
                 {list.map((t) => (
                   <Link href="/ai/result" key={t.id} className="block">
                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">

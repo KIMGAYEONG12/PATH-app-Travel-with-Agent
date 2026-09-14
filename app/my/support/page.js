@@ -14,21 +14,23 @@ export default function SupportPage() {
       <Header title="고객센터" backHref="/my" className="lg:hidden" />
       <div className="screen-scroll">
         <div className="container">
-          <div className="h2" style={{ marginBottom: 10 }}>
+          <div
+            className="text-[18px] lg:text-[23px] font-bold text-[var(--text)]"
+            style={{ marginBottom: 10 }}
+          >
             자주 묻는 질문
           </div>
           <Card padded={false}>
             {faqItems.map((q, i) => (
               <div
                 key={q}
+                className="text-[14px] font-semibold lg:text-[19px]"
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
                   padding: "16px 16px",
                   borderBottom: i < faqItems.length - 1 ? "1px solid var(--border)" : "none",
-                  fontSize: 14,
-                  fontWeight: 600,
                 }}
               >
                 {q}
@@ -48,7 +50,10 @@ export default function SupportPage() {
             </Button>
           </div>
 
-          <div className="body-sm" style={{ textAlign: "center", marginTop: 20, lineHeight: 1.7 }}>
+          <div
+            className="text-[13px] lg:text-[15px] text-muted text-center"
+            style={{ marginTop: 20, lineHeight: 1.7 }}
+          >
             이메일 support@path-travel.com
             <br />
             운영시간 평일 09:00 - 18:00 (점심시간 12:00-13:00)

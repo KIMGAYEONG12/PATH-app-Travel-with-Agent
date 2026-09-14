@@ -146,7 +146,7 @@ export default function FavoritesPage() {
               </div>
 
               {/* 데스크톱: 포토 카드 4열 그리드 */}
-              <div className="hidden grid-cols-4 gap-5 pb-10 lg:grid">
+              <div className="hidden grid-cols-5 gap-4 pb-10 lg:grid">
                 {visible.map((item) => (
                   <div key={item.id}>
                     <div className="relative">

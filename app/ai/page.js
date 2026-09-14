@@ -138,12 +138,12 @@ export default function AiRequestPage() {
       {/* ---------- PC (프로토타입 "PC AI 여행 만들기": 좌 요청폼 / 우 미리보기) ---------- */}
       <div className="hidden flex-1 flex-col lg:flex">
         <header className="flex shrink-0 items-center border-b border-line px-10 py-6">
-          <h1 className="text-[20px] font-bold text-navy-deep">AI 여행 만들기</h1>
+          <h1 className="text-[23px] font-bold text-navy-deep">AI 여행 만들기</h1>
         </header>
 
         <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
           <div className="flex w-[500px] shrink-0 flex-col">
-            <h2 className="text-[14px] font-bold text-navy-deep">AI에게 요청하는 내용</h2>
+            <h2 className="text-[17px] font-bold text-navy-deep">AI에게 요청하는 내용</h2>
             <div className="mt-3 rounded-2xl border border-line bg-white p-5">
               <textarea
                 value={text}
@@ -155,7 +155,7 @@ export default function AiRequestPage() {
               />
             </div>
 
-            <h2 className="mt-6 text-[14px] font-bold text-navy-deep">추천 조건</h2>
+            <h2 className="mt-6 text-[17px] font-bold text-navy-deep">추천 조건</h2>
             <div className="mt-3 flex flex-wrap gap-2">
               {PC_CONDITIONS.map((tag) => (
                 <button
@@ -172,7 +172,7 @@ export default function AiRequestPage() {
               ))}
             </div>
 
-            <h2 className="mt-6 text-[14px] font-bold text-navy-deep">사진으로 알려주기</h2>
+            <h2 className="mt-6 text-[17px] font-bold text-navy-deep">사진으로 알려주기</h2>
             <div className="mt-3 grid grid-cols-3 gap-3">
               {[0, 1, 2].map((i) => (
                 <div key={i}>
@@ -218,9 +218,13 @@ export default function AiRequestPage() {
           </div>
 
           <div className="flex flex-1 flex-col">
-            <h2 className="text-[14px] font-bold text-navy-deep">이런 여행은 어때요? (미리보기)</h2>
-            <div className="mt-3 flex flex-1 items-center justify-center rounded-2xl bg-[#e4e9f4] text-[15px] text-muted">
-              지도 · 추천 코스 미리보기
+            <h2 className="text-[19px] font-bold text-navy-deep">이런 여행은 어때요? (미리보기)</h2>
+            {/* 지도/AI 대화 화면과 동일한 패턴: 박스 자체는 화면을 꽉 채우지 않도록
+                여백을 두어 작게 보이게 하고, 안내 글자는 잘 보이도록 크게 표시합니다. */}
+            <div className="mt-3 flex flex-1 items-center justify-center p-6">
+              <div className="flex h-[420px] w-full max-w-[560px] items-center justify-center rounded-3xl bg-[#e4e9f4] text-[18px] font-bold text-muted">
+                지도 · 추천 코스 미리보기
+              </div>
             </div>
           </div>
         </div>

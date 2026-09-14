@@ -36,7 +36,7 @@ export default function NearbyPage() {
       <div className="flex min-w-0 flex-1 flex-col lg:mx-auto lg:max-w-2xl lg:border-x lg:border-line">
         <header className="hidden shrink-0 items-center gap-2 border-b border-line px-10 py-6 lg:flex">
           <span className="text-[15px] font-medium text-muted">지도</span>
-          <h1 className="text-[20px] font-bold text-navy-deep">주변 맛집 추천</h1>
+          <h1 className="text-[23px] font-bold text-navy-deep">주변 맛집 추천</h1>
         </header>
         <Header title="주변 맛집 추천" className="lg:hidden" />
 

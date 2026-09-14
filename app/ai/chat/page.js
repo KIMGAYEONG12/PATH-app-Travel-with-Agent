@@ -93,24 +93,25 @@ export default function AiChatPage() {
           (Sidebar를 여기서 또 그리면 사이드바가 두 번 나옵니다). */}
       <div className="hidden flex-1 flex-col lg:flex">
         <header className="flex shrink-0 items-center border-b border-line px-10 py-6">
-          <h1 className="text-[20px] font-bold text-navy-deep">AI와 대화하기</h1>
+          <h1 className="text-[23px] font-bold text-navy-deep">AI와 대화하기</h1>
         </header>
 
         <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
-          {/* 좌: 대화 */}
-          <div className="flex w-[500px] shrink-0 flex-col">
-            <h2 className="text-[14px] font-bold text-navy-deep">대화</h2>
+          {/* 좌: 대화 — 오른쪽 "실시간 반영" 영역을 줄인 만큼, 대화 영역은
+              폭을 넓히고 글씨도 한 단계 더 키워 화면에서 더 도드라지게 합니다. */}
+          <div className="flex w-[560px] shrink-0 flex-col">
+            <h2 className="text-[19px] font-bold text-navy-deep">대화</h2>
 
             <div className="mt-4 flex flex-1 flex-col gap-3">
               {PC_USER_LINES.map((line) => (
                 <div
                   key={line}
-                  className="self-end rounded-2xl bg-[#dfe6fb] px-5 py-3.5 text-[14px] font-semibold text-navy-deep"
+                  className="self-end rounded-2xl bg-[#dfe6fb] px-5 py-4 text-[17px] font-semibold text-navy-deep"
                 >
                   {line}
                 </div>
               ))}
-              <div className="max-w-[86%] self-start rounded-2xl bg-white px-5 py-4 text-[14px] font-semibold leading-6 text-navy-deep shadow-[0_2px_10px_rgba(30,39,97,0.06)]">
+              <div className="max-w-[86%] self-start rounded-2xl bg-white px-5 py-4 text-[17px] font-semibold leading-7 text-navy-deep shadow-[0_2px_10px_rgba(30,39,97,0.06)]">
                 네! 요청하신 내용으로
                 <br />
                 일정을 수정하고 있어요
@@ -122,7 +123,7 @@ export default function AiChatPage() {
                 value={pcText}
                 onChange={(e) => setPcText(e.target.value)}
                 placeholder="메시지를 입력하세요"
-                className="w-full bg-transparent text-[14px] text-navy-deep outline-none placeholder:text-muted"
+                className="w-full bg-transparent text-[16px] text-navy-deep outline-none placeholder:text-muted"
                 onKeyDown={(e) => e.key === "Enter" && submit()}
               />
               <button onClick={submit} aria-label="전송" className="shrink-0 text-navy">
@@ -131,16 +132,17 @@ export default function AiChatPage() {
             </div>
           </div>
 
-          {/* 우: 실시간 반영되는 일정 · 지도 */}
+          {/* 우: 실시간 반영되는 일정 · 지도 — 왼쪽 대화 영역을 넓힌 만큼
+              박스 높이를 더 줄여서 전체적으로 작아 보이도록 합니다. */}
           <div className="flex flex-1 flex-col">
-            <h2 className="text-[14px] font-bold text-navy-deep">실시간 반영되는 일정 · 지도</h2>
+            <h2 className="text-[18px] font-bold text-navy-deep">실시간 반영되는 일정 · 지도</h2>
 
-            <div className="mt-4 flex h-[260px] shrink-0 flex-col items-center justify-center rounded-2xl bg-[#e4e9f4] text-center">
-              <p className="text-[15px] font-bold text-navy-deep">지도 화면 · 경로</p>
-              <p className="mt-1 text-[13px] text-muted">대화 내용이 즉시 반영됨</p>
+            <div className="mt-4 flex h-[220px] shrink-0 flex-col items-center justify-center rounded-2xl bg-[#e4e9f4] text-center">
+              <p className="text-[16px] font-bold text-navy-deep">지도 화면 · 경로</p>
+              <p className="mt-1 text-[14px] text-muted">대화 내용이 즉시 반영됨</p>
             </div>
 
-            <div className="mt-6 flex flex-1 flex-col items-center justify-center rounded-2xl border border-line bg-white text-center">
+            <div className="mt-6 flex h-[130px] shrink-0 flex-col items-center justify-center rounded-2xl border border-line bg-white text-center">
               <p className="text-[16px] font-extrabold text-navy-deep">변경된 일정 요약</p>
               <p className="mt-2 text-[13px] text-muted">
                 {changedSchedule.before.title}: {changedSchedule.before.value} → {changedSchedule.after.value}

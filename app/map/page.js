@@ -107,7 +107,7 @@ function MapPageInner() {
       {/* ---------- PC: 좌측 리스트 + 우측 지도 (프로토타입 "PC 지도") ---------- */}
       <div className="hidden min-w-0 flex-1 flex-col lg:flex">
         <header className="flex shrink-0 items-center border-b border-line px-10 py-6">
-          <h1 className="text-[20px] font-bold text-navy-deep">지도</h1>
+          <h1 className="text-[23px] font-bold text-navy-deep">지도</h1>
         </header>
         <div className="flex flex-1 bg-[#eef2fb]">
           <div className="flex w-[420px] shrink-0 flex-col gap-5 px-10 py-8">
@@ -156,8 +156,8 @@ function MapPageInner() {
                       <span className="inline-block rounded-full bg-[#eef2fb] px-2.5 py-0.5 text-[11px] font-bold text-muted">
                         {p.tag}
                       </span>
-                      <p className="mt-1 text-[16px] font-extrabold text-navy-deep">{p.name}</p>
-                      <p className="mt-0.5 text-[13px] text-muted">{p.walk}</p>
+                      <p className="mt-1 text-[19px] font-extrabold text-navy-deep">{p.name}</p>
+                      <p className="mt-0.5 text-[10px] text-muted">{p.walk}</p>
                     </div>
                   </Link>
                 ))
@@ -171,9 +171,13 @@ function MapPageInner() {
             </Link>
           </div>
           {/* PC 지도 미리보기 — 프로토타입 "PC 지도"와 동일하게 실제 지도 연동 전
-              단순 플레이스홀더로 표시 (AI 여행 만들기의 미리보기와 같은 패턴) */}
-          <div className="flex flex-1 items-center justify-center bg-[#e4e9f4] text-[15px] text-muted">
-            지도 화면
+              단순 플레이스홀더로 표시 (AI 여행 만들기의 미리보기와 같은 패턴).
+              박스 자체는 화면 전체를 채우지 않도록 여백을 두어 작게 보이게 하고,
+              안내 글자는 눈에 잘 띄도록 크게 표시합니다. */}
+          <div className="flex flex-1 items-center justify-center p-10">
+            <div className="flex h-[420px] w-full max-w-[640px] items-center justify-center rounded-3xl bg-[#e4e9f4] text-[22px] font-bold text-muted">
+              지도 화면
+            </div>
           </div>
         </div>
       </div>

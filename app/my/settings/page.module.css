@@ -61,3 +61,34 @@
 .knobOn {
   transform: translateX(20px);
 }
+
+/* PC 화면에서는 모바일 카드를 그대로 재사용하다 보니 글자가 작게 보여
+   가독성을 위해 데스크톱에서만 폰트를 키웁니다. */
+@media (min-width: 1024px) {
+  .groupTitle {
+    font-size: 17px;
+  }
+
+  .card {
+    border-radius: 18px;
+  }
+
+  .row {
+    font-size: 19px;
+    padding: 20px 4px;
+  }
+
+  .switch {
+    width: 50px;
+    height: 28px;
+  }
+
+  .knob {
+    width: 22px;
+    height: 22px;
+  }
+
+  .knobOn {
+    transform: translateX(22px);
+  }
+}
