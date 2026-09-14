@@ -20,9 +20,9 @@ export default function AiRequestPage() {
   // PC 프로토타입("PC AI 여행 만들기")은 모바일과 달리 예시 문구가 미리 채워져
   // 있지 않고, 빈 입력창에 안내용 플레이스홀더만 보여줍니다. 모바일 입력값과
   // 섞이지 않도록 별도 상태로 관리합니다.
-  const [pcText, setPcText] = useState("");
+  const [pcText, setPcText] = useState(DEFAULT_PROMPT);
   const [tags, setTags] = useState(() => new Set(["도보 최소", "환승 최소", "가족 여행"]));
-  const [pcTags, setPcTags] = useState(() => new Set(["도보 최소", "환승 최소"]));
+  const [pcTags, setPcTags] = useState(() => new Set(["환승 최소"]));
   const [photos, setPhotos] = useState([null, null, null]);
   const fileInputRefs = [useRef(null), useRef(null), useRef(null)];
 
@@ -150,7 +150,8 @@ export default function AiRequestPage() {
           <h1 className="text-[23px] font-bold text-navy-deep">AI 여행 만들기</h1>
         </header>
 
-        <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
+        <div className="flex flex-1 flex-col bg-[#eef2fb] px-10 py-8">
+        <div className="flex gap-8">
           <div className="flex w-[500px] shrink-0 flex-col">
             <h2 className="text-[17px] font-bold text-navy-deep">AI에게 요청하는 내용</h2>
             <div className="relative mt-3 rounded-2xl border border-line bg-white p-5">
@@ -181,7 +182,7 @@ export default function AiRequestPage() {
                   onClick={() => togglePcTag(tag)}
                   className={`rounded-full border px-4 py-2.5 text-[13px] font-semibold transition ${
                     pcTags.has(tag)
-                      ? "border-navy bg-[#dfe6fb] text-navy-deep"
+                      ? "border-[#dfe6fb] bg-[#dfe6fb] text-navy-deep"
                       : "border-line bg-white text-navy-deep/80"
                   }`}
                 >
@@ -243,6 +244,7 @@ export default function AiRequestPage() {
               지도 · 추천 코스 미리보기
             </div>
           </div>
+        </div>
         </div>
       </div>
 

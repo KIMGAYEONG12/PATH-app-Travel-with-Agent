@@ -13,6 +13,15 @@ import { trips, favorites } from "@/lib/mockData";
 
 const FILTERS = ["전체", "예정", "진행중", "완료"];
 
+// 프로토타입("PC 내 여행일정")에서 카드 제목·기간이 목업용 예시 문구로
+// 표시되어 있어, 데스크톱 카드에서만 이 문구를 그대로 보여줍니다.
+// (모바일 리스트는 lib/mockData의 실제 제목·기간을 계속 사용합니다.)
+const PC_TRIP_LABELS = [
+  { title: "여행 1", range: "2026.04.12 - 04.14" },
+  { title: "여행 2", range: "2026.05.10 - 05.12" },
+  { title: "여행 3", range: "2026.06.01 - 06.03" },
+];
+
 export default function MyTripsPage() {
   const [filter, setFilter] = useState("전체");
   const list = filter === "전체" ? trips : trips.filter((t) => t.status === filter);
@@ -105,16 +114,20 @@ export default function MyTripsPage() {
               </div>
 
               {/* 데스크톱: 표지 사진 + "새 일정 만들기" 카드가 함께 있는 그리드
-                  (프로토타입 "PC 내 여행일정") */}
-              <div className="hidden grid-cols-5 gap-5 pb-10 lg:mt-4 lg:grid">
-                {list.map((t) => (
+                  (프로토타입 "PC 내 여행일정") — 4열로 카드를 조금 더 크게 보여줍니다. */}
+              <div className="hidden grid-cols-4 gap-5 pb-10 lg:mt-4 lg:grid">
+                {list.map((t, i) => (
                   <Link href="/ai/result" key={t.id} className="block">
                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={t.cover} alt={t.title} className="absolute inset-0 h-full w-full object-cover" />
                     </div>
-                    <p className="mt-3 text-[13px] font-extrabold text-navy-deep">{t.title}</p>
-                    <p className="mt-0.5 text-[12px] text-muted">{t.range.replace(/\//g, ".")}</p>
+                    <p className="mt-3 text-[14px] font-extrabold text-navy-deep">
+                      {PC_TRIP_LABELS[i]?.title ?? t.title}
+                    </p>
+                    <p className="mt-0.5 text-[12px] text-muted">
+                      {PC_TRIP_LABELS[i]?.range ?? t.range.replace(/\//g, ".")}
+                    </p>
                   </Link>
                 ))}
                 <Link

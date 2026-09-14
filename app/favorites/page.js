@@ -145,15 +145,15 @@ export default function FavoritesPage() {
                 ))}
               </div>
 
-              {/* 데스크톱: 포토 카드 5열 그리드 — 카드 사이 간격을 줄이고
-                  세로 비율을 키워 사진이 이전보다 조금 더 크게 보이도록 합니다. */}
-              <div className="hidden grid-cols-5 gap-3 pb-10 lg:grid">
+              {/* 데스크톱: 포토 카드 4열 그리드 (프로토타입 "PC 찜"과 동일한 열 수)
+                  — 5열보다 카드 폭이 넓어져 사진이 이전보다 조금 더 크게 보입니다. */}
+              <div className="hidden grid-cols-4 gap-5 pb-10 lg:grid">
                 {visible.map((item) => (
                   <div key={item.id}>
                     <div className="relative">
                       <PlacePhoto
                         name={item.name}
-                        className="aspect-[5/4] w-full rounded-2xl"
+                        className="aspect-[3/2] w-full rounded-2xl"
                         labelClassName="hidden"
                       />
                       <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-bold text-navy-deep">

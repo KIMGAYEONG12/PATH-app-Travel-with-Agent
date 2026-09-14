@@ -151,7 +151,7 @@ export default function ProfilePage() {
 
           <div className="flex w-[411px] flex-col gap-6">
             <div>
-              <label className="mb-2 block text-[13px] font-bold text-navy-deep">이름</label>
+              <label className="mb-2 block text-[15px] font-bold text-navy-deep">이름</label>
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -160,7 +160,7 @@ export default function ProfilePage() {
             </div>
 
             <div>
-              <label className="mb-2 block text-[13px] font-bold text-navy-deep">이메일</label>
+              <label className="mb-2 block text-[15px] font-bold text-navy-deep">이메일</label>
               <input
                 disabled
                 className="w-full rounded-2xl border border-[#c7ccd8] bg-[#dfe2e8] px-5 py-3.5 text-[13.5px] text-muted"

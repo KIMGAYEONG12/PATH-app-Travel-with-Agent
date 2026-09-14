@@ -97,8 +97,8 @@ export default function AiChatPage() {
         </header>
 
         <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
-          {/* 좌: 대화 — 오른쪽 "실시간 반영" 영역을 줄인 만큼, 대화 영역은
-              폭을 넓히고 글씨도 한 단계 더 키워 화면에서 더 도드라지게 합니다. */}
+          {/* 좌: 대화 — 원본 목업과 동일하게 말풍선 글씨 크기를 살짝 줄여
+              (18px → 15px) 화면에 더 자연스럽게 맞도록 합니다. */}
           <div className="flex w-[560px] shrink-0 flex-col">
             <h2 className="text-[19px] font-bold text-navy-deep">대화</h2>
 
@@ -106,12 +106,12 @@ export default function AiChatPage() {
               {PC_USER_LINES.map((line) => (
                 <div
                   key={line}
-                  className="self-end rounded-2xl bg-[#dfe6fb] px-5 py-4 text-[17px] font-semibold text-navy-deep"
+                  className="self-end rounded-2xl bg-[#dfe6fb] px-5 py-3.5 text-[15px] font-semibold text-navy-deep"
                 >
                   {line}
                 </div>
               ))}
-              <div className="max-w-[86%] self-start rounded-2xl bg-white px-5 py-4 text-[17px] font-semibold leading-7 text-navy-deep shadow-[0_2px_10px_rgba(30,39,97,0.06)]">
+              <div className="max-w-[86%] self-start rounded-2xl bg-white px-5 py-3.5 text-[15px] font-semibold leading-7 text-navy-deep shadow-[0_2px_10px_rgba(30,39,97,0.06)]">
                 네! 요청하신 내용으로
                 <br />
                 일정을 수정하고 있어요
@@ -123,7 +123,7 @@ export default function AiChatPage() {
                 value={pcText}
                 onChange={(e) => setPcText(e.target.value)}
                 placeholder="메시지를 입력하세요"
-                className="w-full bg-transparent text-[16px] text-navy-deep outline-none placeholder:text-muted"
+                className="w-full bg-transparent text-[15px] text-navy-deep outline-none placeholder:text-muted"
                 onKeyDown={(e) => e.key === "Enter" && submit()}
               />
               <button onClick={submit} aria-label="전송" className="shrink-0 text-navy">
