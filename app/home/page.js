@@ -25,7 +25,7 @@ export default function HomePage() {
   return (
     <TabShell title="홈">
       <LogoHeader />
-      <main className="flex flex-col gap-6 px-5 pt-2 lg:px-0">
+      <main className="flex flex-col gap-5 px-5 pt-2 lg:px-0">
         <Link
           href="/ai"
           className="flex items-center justify-between rounded-3xl bg-navy px-6 py-6 text-white shadow-lg shadow-navy/20"
@@ -56,34 +56,32 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* PC: 이미지 아래에 이름/부제 표기 (4개) */}
-          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-6">
+          {/* PC: 이미지 아래에 이름/부제 표기 (4개) — 세로 공간 절약을 위해
+              4:3보다 낮은 비율(16:10)을 사용해 스크롤 없이 아래 섹션까지 보이게 함 */}
+          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-5">
             {SPOTS.map((s) => (
               <Link key={s.name} href={`/ai/place/${s.id}`} className="block">
                 <PlacePhoto
                   name={s.name}
-                  className="aspect-[4/3] w-full rounded-2xl"
+                  className="aspect-[16/10] w-full rounded-2xl"
                   labelClassName="hidden"
                 />
-                <p className="mt-2.5 text-[15px] font-bold text-navy-deep">{s.name}</p>
+                <p className="mt-2 text-[15px] font-bold text-navy-deep">{s.name}</p>
                 <p className="mt-0.5 text-[13px] text-muted">{s.time}</p>
               </Link>
             ))}
           </div>
         </section>
 
-        <div className="grid gap-4 pb-6 lg:grid-cols-2">
+        {/* 모바일: 카드 안에 라벨을 함께 표기 */}
+        <div className="grid gap-4 pb-6 lg:hidden">
           <Link href="/my/trips" className="block">
             <Card className="flex items-center justify-between">
               <div>
                 <p className="text-[13px] text-muted">내 여행 요약</p>
                 <p className="mt-1 text-[16px] font-bold text-navy-deep">도쿄 여행 · D-12 진행중</p>
-                <p className="mt-0.5 hidden text-[13px] text-muted lg:block">04.12 - 04.14 · 2박 3일</p>
               </div>
-              <span className="hidden shrink-0 rounded-xl bg-navy px-5 py-3 text-[14px] font-bold text-white lg:block">
-                일정 보기
-              </span>
-              <IconChevronRight className="h-5 w-5 shrink-0 text-navy lg:hidden" />
+              <IconChevronRight className="h-5 w-5 shrink-0 text-navy" />
             </Card>
           </Link>
 
@@ -92,18 +90,47 @@ export default function HomePage() {
               <div>
                 <p className="text-[13px] text-muted">최근 AI 대화 이어하기</p>
                 <p className="mt-1 text-[16px] font-bold text-navy-deep">&quot;점심을 스시로 바꿔줘&quot;</p>
-                <p className="mt-0.5 hidden text-[13px] text-muted lg:block">3분 전</p>
               </div>
-              <span className="hidden shrink-0 rounded-xl bg-navy px-5 py-3 text-[14px] font-bold text-white lg:block">
-                이어서 대화하기
-              </span>
-              <IconChevronRight className="h-5 w-5 shrink-0 text-navy lg:hidden" />
+              <IconChevronRight className="h-5 w-5 shrink-0 text-navy" />
             </Card>
           </Link>
         </div>
 
+        {/* PC: "지금, 도쿄는 어때요?"와 같은 방식으로 제목을 카드 밖에 표기 */}
+        <div className="hidden gap-5 pb-4 lg:grid lg:grid-cols-2">
+          <div>
+            <h2 className="mb-3 text-[17px] font-bold text-navy-deep">내 여행 요약</h2>
+            <Link href="/my/trips" className="block">
+              <Card className="flex items-center justify-between">
+                <div>
+                  <p className="text-[16px] font-bold text-navy-deep">도쿄 여행 · D-12 진행중</p>
+                  <p className="mt-0.5 text-[13px] text-muted">04.12 - 04.14 · 2박 3일</p>
+                </div>
+                <span className="shrink-0 rounded-xl bg-navy px-5 py-3 text-[14px] font-bold text-white">
+                  일정 보기
+                </span>
+              </Card>
+            </Link>
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-[17px] font-bold text-navy-deep">최근 AI 대화 이어하기</h2>
+            <Link href="/ai/chat" className="block">
+              <Card className="flex items-center justify-between">
+                <div>
+                  <p className="text-[16px] font-bold text-navy-deep">&quot;점심을 스시로 바꿔줘&quot;</p>
+                  <p className="mt-0.5 text-[13px] text-muted">3분 전</p>
+                </div>
+                <span className="shrink-0 rounded-xl bg-navy px-5 py-3 text-[14px] font-bold text-white">
+                  이어서 대화하기
+                </span>
+              </Card>
+            </Link>
+          </div>
+        </div>
+
         {/* PC 전용 — 모바일 프로토타입("홈")에는 없는 섹션 */}
-        <section className="hidden pb-10 lg:block">
+        <section className="hidden pb-6 lg:block">
           <h2 className="mb-3 text-[17px] font-bold text-navy-deep">이런 것도 물어보세요</h2>
           <div className="flex flex-wrap gap-3">
             {ASK_CHIPS.map((c) => (

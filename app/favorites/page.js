@@ -11,21 +11,20 @@ import Button from "@/components/Button";
 
 const FILTERS = ["전체", "관광지", "맛집", "숙소"];
 
-// 프로토타입("찜" / "PC 찜") 기준 목록 — 모바일 자막은 "지역 · 카테고리",
-// 데스크톱 자막은 "카테고리 · 도보 N분" 형식입니다(PC 찜 목업과 동일).
+// 프로토타입("찜" / "PC 찜") 기준 목록 — 자막은 "지역 · 카테고리" 형식입니다.
 const ITEMS = [
-  { id: "senso", name: "센소지", area: "아사쿠사 · 관광지", category: "관광지", walk: "도보 6분" },
-  { id: "ichiran", name: "이치란 라멘", area: "신주쿠 · 맛집", category: "맛집", walk: "도보 3분" },
-  { id: "ueno", name: "우에노 공원", area: "우에노 · 관광지", category: "관광지", walk: "도보 12분" },
-  { id: "shibuya", name: "시부야 스크램블", area: "시부야 · 숙소", category: "숙소", walk: "도보 5분" },
-  { id: "shinjukuGyoen", name: "신주쿠 교엔", area: "신주쿠 · 관광지", category: "관광지", walk: "도보 8분" },
-  { id: "izakaya", name: "이자카야 하나", area: "신주쿠 · 맛집", category: "맛집", walk: "도보 4분" },
-  { id: "skytree", name: "스카이트리", area: "스미다 · 관광지", category: "관광지", walk: "도보 2분" },
-  { id: "guesthouse", name: "아사쿠사 게스트하우스", area: "아사쿠사 · 숙소", category: "숙소", walk: "도보 7분" },
+  { id: "senso", name: "센소지", area: "아사쿠사 · 관광지" },
+  { id: "ichiran", name: "이치란 라멘", area: "신주쿠 · 맛집" },
+  { id: "ueno", name: "우에노 공원", area: "우에노 · 관광지" },
+  { id: "shibuya", name: "시부야 스크램블", area: "시부야 · 관광지" },
+  { id: "shinjukuGyoen", name: "신주쿠 교엔", area: "신주쿠 · 관광지" },
+  { id: "izakaya", name: "이자카야 하나", area: "신주쿠 · 맛집" },
+  { id: "skytree", name: "스카이트리", area: "스미다 · 관광지" },
+  { id: "guesthouse", name: "아사쿠사 게스트하우스", area: "아사쿠사 · 숙소" },
 ];
 
 function categoryOf(item) {
-  return item.category;
+  return item.area.split(" · ")[1];
 }
 
 const SORTS = ["최신순", "오래된순"];
@@ -168,9 +167,7 @@ export default function FavoritesPage() {
                       </button>
                     </div>
                     <p className="mt-3 text-[15px] font-extrabold text-navy-deep">{item.name}</p>
-                    <p className="mt-0.5 text-[13px] text-muted">
-                      {item.category} · {item.walk}
-                    </p>
+                    <p className="mt-0.5 text-[13px] text-muted">{item.area}</p>
                   </div>
                 ))}
               </div>

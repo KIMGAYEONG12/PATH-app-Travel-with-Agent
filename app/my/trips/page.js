@@ -49,7 +49,7 @@ export default function MyTripsPage() {
           ) : (
             <>
               {/* 모바일: 세로 리스트 */}
-              <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 20, marginTop: 16 }}>
+              <div className="flex flex-col gap-5 mt-4 lg:hidden">
                 {list.map((t) => (
                   <Link href="/ai/result" key={t.id}>
                     <Card
@@ -93,7 +93,7 @@ export default function MyTripsPage() {
               <div className="h2 lg:hidden" style={{ marginTop: 32, marginBottom: 20 }}>
                 최근 저장한 장소
               </div>
-              <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <div className="flex flex-col gap-2.5 lg:hidden">
                 {favorites.slice(0, 3).map((f) => (
                   <Link href={`/ai/place/${f.id}`} key={f.id}>
                     <Card style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

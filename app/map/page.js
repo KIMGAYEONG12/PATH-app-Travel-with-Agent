@@ -20,7 +20,7 @@ const PINS = [
 const PLACE_LIST = [
   { name: "센소지", tag: "관광지", walk: "도보 6분" },
   { name: "이치란 라멘", tag: "맛집", walk: "도보 3분" },
-  { name: "우에노 공원", tag: "관광지", walk: "도보 12분" },
+  { name: "시부야 스크램블", tag: "숙소", walk: "도보 5분" },
 ];
 
 function Pins({ big }) {
@@ -74,7 +74,7 @@ function MapPageInner() {
   );
 
   return (
-    <div className="pz-shell flex min-h-dvh w-full flex-col bg-transparent lg:min-h-0 lg:flex-row lg:bg-white">
+    <div className="pz-shell flex min-h-dvh w-full flex-col bg-transparent lg:flex-row lg:bg-white">
       <Sidebar />
 
       {/* ---------- 모바일: 지도만 크게 (하단 메뉴 없음) ---------- */}
@@ -145,11 +145,11 @@ function MapPageInner() {
                   <Link
                     key={p.name}
                     href="/map/route"
-                    className="flex gap-4 rounded-2xl border border-line bg-white p-3"
+                    className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4"
                   >
                     <PlacePhoto
                       name={p.name}
-                      className="h-16 w-16 shrink-0 rounded-xl"
+                      className="h-24 w-24 shrink-0 rounded-2xl"
                       labelClassName="hidden"
                     />
                     <div>
@@ -170,8 +170,10 @@ function MapPageInner() {
               이동 경로 보기
             </Link>
           </div>
-          <div className="map-grid relative flex-1">
-            <Pins big />
+          {/* PC 지도 미리보기 — 프로토타입 "PC 지도"와 동일하게 실제 지도 연동 전
+              단순 플레이스홀더로 표시 (AI 여행 만들기의 미리보기와 같은 패턴) */}
+          <div className="flex flex-1 items-center justify-center bg-[#e4e9f4] text-[15px] text-muted">
+            지도 화면
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ export default function AiRequestPage() {
   const router = useRouter();
   const [text, setText] = useState(DEFAULT_PROMPT);
   const [tags, setTags] = useState(() => new Set(["도보 최소", "환승 최소", "가족 여행"]));
-  const [pcTags, setPcTags] = useState(() => new Set(["환승 최소"]));
+  const [pcTags, setPcTags] = useState(() => new Set(["도보 최소", "환승 최소"]));
   const [photos, setPhotos] = useState([null, null, null]);
   const fileInputRefs = [useRef(null), useRef(null), useRef(null)];
 

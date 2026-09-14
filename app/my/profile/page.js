@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 
+// 모바일 프로토타입("프로필 수정") 기준 — 로그인 연동 전이라 예시 이메일을 보여줍니다.
 const EMAIL = "user@path-travel.com";
 
 export default function ProfilePage() {
@@ -45,7 +46,7 @@ export default function ProfilePage() {
       />
       <div className="screen-scroll">
         {/* ---------- 모바일: 가운데 정렬 ---------- */}
-        <div className="container lg:hidden" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div className="container flex flex-col items-center lg:hidden">
           <button
             onClick={() => fileInputRef.current?.click()}
             aria-label="프로필 사진 변경"
@@ -122,20 +123,29 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* ---------- PC (프로토타입 "PC 프로필 수정": 좌측 정렬 폼) ---------- */}
+        {/* ---------- PC (프로토타입 "PC 프로필 수정": 좌측 정렬 폼) ----------
+            프로토타입은 로그인 연동 전 상태를 보여주므로, 아바타는 아이콘 없이
+            빈 원으로(호버 시에만 카메라 아이콘 표시), 이름/이메일도 예시 값
+            대신 일반 라벨을 보여줍니다. */}
         <div className="hidden lg:flex lg:flex-col lg:gap-8 lg:pb-10">
           <div className="flex items-center gap-4">
             <button
               onClick={() => fileInputRef.current?.click()}
               aria-label="프로필 사진 변경"
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-navy"
+              className="group flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-navy"
               style={avatarStyle}
             >
-              {!photo && <Icon name="camera" size={20} />}
+              {!photo && (
+                <Icon
+                  name="camera"
+                  size={20}
+                  className="opacity-0 transition group-hover:opacity-70"
+                />
+              )}
             </button>
             <div>
               <p className="text-[17px] font-extrabold text-navy-deep">{name || "이름"}</p>
-              <p className="mt-0.5 text-[13px] text-muted">{EMAIL}</p>
+              <p className="mt-0.5 text-[13px] text-muted">이메일</p>
             </div>
           </div>
 
@@ -145,15 +155,13 @@ export default function ProfilePage() {
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="이름을 입력하세요"
-                className="w-full rounded-2xl border border-line bg-white px-5 py-3.5 text-[14.5px] text-navy-deep outline-none placeholder:text-muted focus:border-navy"
+                className="w-full rounded-2xl border border-line bg-white px-5 py-3.5 text-[14.5px] text-navy-deep outline-none focus:border-navy"
               />
             </div>
 
             <div>
               <label className="mb-2 block text-[14px] font-bold text-navy-deep">이메일</label>
               <input
-                defaultValue={EMAIL}
                 disabled
                 className="w-full rounded-2xl border border-line bg-[#eef2fb] px-5 py-3.5 text-[14.5px] text-muted"
               />
