@@ -176,9 +176,11 @@ export default function MapRoutePage() {
 
             <RouteLegs />
 
-            <Button variant="primary" style={{ marginTop: 6 }}>
-              길찾기 상세 보기
-            </Button>
+            <Link href="/ai/result">
+              <Button variant="primary" style={{ marginTop: 6 }}>
+                길찾기 상세 보기
+              </Button>
+            </Link>
           </Card>
 
           <div className="body-sm" style={{ textAlign: "center", marginTop: 14 }}>

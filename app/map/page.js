@@ -109,7 +109,8 @@ function MapPageInner() {
         <header className="flex shrink-0 items-center border-b border-line px-10 py-6">
           <h1 className="text-[23px] font-bold text-navy-deep">지도</h1>
         </header>
-        <div className="flex flex-1 bg-[#eef2fb]">
+        <div className="flex flex-1 justify-center bg-[#eef2fb]">
+          <div className="flex w-full max-w-[1180px] flex-1">
           <div className="flex w-[420px] shrink-0 flex-col gap-5 px-10 py-8">
             <div className="flex items-center gap-3 rounded-2xl border border-line bg-white px-5 py-3.5 text-muted">
               <input
@@ -166,11 +167,14 @@ function MapPageInner() {
           </div>
           {/* PC 지도 미리보기 — 프로토타입 "PC 지도"와 동일하게 실제 지도 연동 전
               단순 플레이스홀더로 표시. 프로토타입처럼 우측 영역을 거의 가득
-              채우도록 여백을 최소화합니다. */}
+              채우도록 여백을 최소화합니다. 전체 영역은 다른 화면들과 동일하게
+              max-w-[1180px]로 제한해, 넓은 모니터에서 지도가 지나치게
+              커지지 않도록 합니다. */}
           <div className="flex flex-1 p-8">
             <div className="flex flex-1 items-center justify-center rounded-3xl bg-[#e4e9f4] text-[22px] font-bold text-muted">
               지도 화면
             </div>
+          </div>
           </div>
         </div>
       </div>

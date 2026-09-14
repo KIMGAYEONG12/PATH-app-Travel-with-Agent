@@ -144,8 +144,8 @@ export default function ProfilePage() {
               )}
             </button>
             <div>
-              <p className="text-[15px] font-extrabold text-navy-deep">{name || "이름"}</p>
-              <p className="mt-0.5 text-[12px] text-muted">이메일</p>
+              <p className="text-[18px] font-extrabold text-navy-deep">{name || "이름"}</p>
+              <p className="mt-0.5 text-[14px] text-muted">이메일</p>
             </div>
           </div>
 

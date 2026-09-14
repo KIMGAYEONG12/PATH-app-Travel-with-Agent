@@ -115,14 +115,14 @@ export default function MyTripsPage() {
 
               {/* 데스크톱: 표지 사진 + "새 일정 만들기" 카드가 함께 있는 그리드
                   (프로토타입 "PC 내 여행일정") — 4열로 카드를 조금 더 크게 보여줍니다. */}
-              <div className="hidden grid-cols-4 gap-5 pb-10 lg:mt-4 lg:grid">
+              <div className="hidden grid-cols-4 gap-6 pb-10 lg:mt-4 lg:grid">
                 {list.map((t, i) => (
                   <Link href="/ai/result" key={t.id} className="block">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                    <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={t.cover} alt={t.title} className="absolute inset-0 h-full w-full object-cover" />
                     </div>
-                    <p className="mt-3 text-[14px] font-extrabold text-navy-deep">
+                    <p className="mt-3 text-[16px] font-extrabold text-navy-deep">
                       {PC_TRIP_LABELS[i]?.title ?? t.title}
                     </p>
                     <p className="mt-0.5 text-[12px] text-muted">
@@ -132,7 +132,7 @@ export default function MyTripsPage() {
                 ))}
                 <Link
                   href="/ai"
-                  className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-white text-[13px] font-bold text-muted transition hover:border-navy hover:text-navy"
+                  className="flex aspect-[5/4] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-white text-[13px] font-bold text-muted transition hover:border-navy hover:text-navy"
                 >
                   <Icon name="plus" size={20} />새 일정 만들기
                 </Link>
