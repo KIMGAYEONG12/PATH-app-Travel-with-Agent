@@ -128,34 +128,34 @@ export default function ProfilePage() {
             빈 원으로(호버 시에만 카메라 아이콘 표시), 이름/이메일도 예시 값
             대신 일반 라벨을 보여줍니다. */}
         <div className="hidden lg:flex lg:flex-col lg:gap-8 lg:pb-10">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <button
               onClick={() => fileInputRef.current?.click()}
               aria-label="프로필 사진 변경"
-              className="group flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-navy"
+              className="group flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-navy"
               style={avatarStyle}
             >
               {!photo && (
                 <Icon
                   name="camera"
-                  size={20}
+                  size={24}
                   className="opacity-0 transition group-hover:opacity-70"
                 />
               )}
             </button>
             <div>
-              <p className="text-[18px] font-extrabold text-navy-deep">{name || "이름"}</p>
-              <p className="mt-0.5 text-[14px] text-muted">이메일</p>
+              <p className="text-[20px] font-extrabold text-navy-deep">{name || "이름"}</p>
+              <p className="mt-1 text-[15px] text-muted">이메일</p>
             </div>
           </div>
 
-          <div className="flex w-[411px] flex-col gap-6">
+          <div className="flex w-[480px] flex-col gap-6">
             <div>
               <label className="mb-2 block text-[15px] font-bold text-navy-deep">이름</label>
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-2xl border border-line bg-white px-5 py-3.5 text-[13.5px] text-navy-deep outline-none focus:border-navy"
+                className="w-full rounded-2xl border border-line bg-white px-5 py-4 text-[15px] text-navy-deep outline-none focus:border-navy"
               />
             </div>
 
@@ -163,18 +163,18 @@ export default function ProfilePage() {
               <label className="mb-2 block text-[15px] font-bold text-navy-deep">이메일</label>
               <input
                 disabled
-                className="w-full rounded-2xl border border-[#c7ccd8] bg-[#dfe2e8] px-5 py-3.5 text-[13.5px] text-muted"
+                className="w-full rounded-2xl border border-[#c7ccd8] bg-[#dfe2e8] px-5 py-4 text-[15px] text-muted"
               />
             </div>
 
             <button
               onClick={handleSave}
-              className="flex h-14 w-full items-center justify-center rounded-2xl bg-navy text-[14px] font-bold text-white transition"
+              className="flex h-14 w-full items-center justify-center rounded-2xl bg-navy text-[15px] font-bold text-white transition"
             >
               {saved ? "저장됨 ✓" : "저장하기"}
             </button>
 
-            <p className="text-[12px] text-muted">가입일 2026.01.15 · 마지막 로그인 오늘</p>
+            <p className="text-[13px] text-muted">가입일 2026.01.15 · 마지막 로그인 오늘</p>
           </div>
         </div>
       </div>
