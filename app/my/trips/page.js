@@ -17,9 +17,9 @@ const FILTERS = ["전체", "예정", "진행중", "완료"];
 // 표시되어 있어, 데스크톱 카드에서만 이 문구를 그대로 보여줍니다.
 // (모바일 리스트는 lib/mockData의 실제 제목·기간을 계속 사용합니다.)
 const PC_TRIP_LABELS = [
-  { title: "여행 1", range: "2026.04.12 - 04.14" },
-  { title: "여행 2", range: "2026.05.10 - 05.12" },
-  { title: "여행 3", range: "2026.06.01 - 06.03" },
+  { title: "센소지", range: "2026.04.12 - 04.14" },
+  { title: "우에노 공원", range: "2026.05.10 - 05.12" },
+  { title: "스카이트리", range: "2026.06.01 - 06.03" },
 ];
 
 export default function MyTripsPage() {

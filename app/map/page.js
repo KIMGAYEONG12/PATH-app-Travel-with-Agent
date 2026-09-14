@@ -109,7 +109,7 @@ function MapPageInner() {
         <header className="flex shrink-0 items-center border-b border-line px-10 py-6">
           <h1 className="text-[23px] font-bold text-navy-deep">지도</h1>
         </header>
-        <div className="flex flex-1 justify-center bg-[#eef2fb]">
+        <div className="flex flex-1 justify-start bg-[#eef2fb]">
           <div className="flex w-full max-w-[1180px] flex-1">
           <div className="flex w-[420px] shrink-0 flex-col gap-5 px-10 py-8">
             <div className="flex items-center gap-3 rounded-2xl border border-line bg-white px-5 py-3.5 text-muted">
