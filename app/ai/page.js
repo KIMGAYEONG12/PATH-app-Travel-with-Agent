@@ -22,7 +22,7 @@ export default function AiRequestPage() {
   // 섞이지 않도록 별도 상태로 관리합니다.
   const [pcText, setPcText] = useState(DEFAULT_PROMPT);
   const [tags, setTags] = useState(() => new Set(["도보 최소", "환승 최소", "가족 여행"]));
-  const [pcTags, setPcTags] = useState(() => new Set(["환승 최소"]));
+  const [pcTags, setPcTags] = useState(() => new Set(["도보 최소", "환승 최소"]));
   const [photos, setPhotos] = useState([null, null, null]);
   const fileInputRefs = [useRef(null), useRef(null), useRef(null)];
 
@@ -205,7 +205,7 @@ export default function AiRequestPage() {
                   <button
                     type="button"
                     onClick={() => pickPhoto(i)}
-                    className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-2xl bg-[#e4e9f4] text-[13px] text-muted"
+                    className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-2xl bg-[#e4e9f4] text-[15px] text-muted"
                     style={
                       photos[i]
                         ? { backgroundImage: `url(${photos[i]})`, backgroundSize: "cover", backgroundPosition: "center" }

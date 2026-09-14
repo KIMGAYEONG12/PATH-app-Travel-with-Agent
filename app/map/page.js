@@ -20,7 +20,7 @@ const PINS = [
 const PLACE_LIST = [
   { name: "센소지", tag: "관광지", walk: "도보 6분" },
   { name: "이치란 라멘", tag: "맛집", walk: "도보 3분" },
-  { name: "시부야 스크램블", tag: "숙소", walk: "도보 5분" },
+  { name: "우에노 공원", tag: "관광지", walk: "도보 12분" },
 ];
 
 function Pins({ big }) {
@@ -163,12 +163,6 @@ function MapPageInner() {
                 ))
               )}
             </div>
-            <Link
-              href="/map/route"
-              className="mt-auto flex items-center justify-center rounded-2xl bg-navy px-5 py-3.5 text-[15px] font-bold text-white"
-            >
-              이동 경로 보기
-            </Link>
           </div>
           {/* PC 지도 미리보기 — 프로토타입 "PC 지도"와 동일하게 실제 지도 연동 전
               단순 플레이스홀더로 표시. 프로토타입처럼 우측 영역을 거의 가득
