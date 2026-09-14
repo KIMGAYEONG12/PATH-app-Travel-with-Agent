@@ -1,0 +1,153 @@
+/* ------------------------------------------------------------------
+   스플래시 화면
+   - 모바일(<1024px): 기존 path-app 풀스크린 배경 이미지 + 버튼 그대로.
+   - PC(>=1024px): SPLASH 디자인(로고 + 카피 + 배경 사진)이 "스크롤 없이"
+     브라우저 화면 한 번에(단일 뷰포트) 전부 보이는 좌/우 2단 레이아웃.
+   전환은 Tailwind의 lg: 유틸리티가 아니라 이 파일의 순수 CSS
+   @media 쿼리로 처리합니다 -- 빌드/컨텐츠 스캔 설정과 무관하게
+   항상 동일하게 동작하도록 하기 위함입니다.
+------------------------------------------------------------------- */
+
+.wrap {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  flex: 1;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 24px;
+  right: 24px;
+  z-index: 2;
+}
+
+.scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  background: linear-gradient(180deg, rgba(18, 23, 63, 0) 0%, rgba(18, 23, 63, 0.55) 100%);
+  z-index: 1;
+}
+
+/* ---------------- PC (>=1024px) ---------------- */
+
+.pcWrap {
+  display: none;
+}
+
+.pcBrand {
+  position: relative;
+  flex: 0 0 44%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--navy, #1e2761);
+  color: #ffffff;
+  padding: 0 clamp(28px, 4vw, 72px);
+  text-align: center;
+}
+
+.pcGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 78% 75%, rgba(244, 162, 104, 0.35), transparent 40%);
+}
+
+.pcLogo {
+  position: relative;
+  height: clamp(72px, 11vh, 128px);
+  width: auto;
+}
+
+.pcEyebrow {
+  position: relative;
+  margin-top: clamp(12px, 2vh, 24px);
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pcHeadline {
+  position: relative;
+  margin-top: clamp(14px, 2.2vh, 28px);
+  max-width: 480px;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.pcSub {
+  position: relative;
+  margin-top: 12px;
+  font-size: clamp(13px, 1vw, 15px);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pcCta {
+  position: relative;
+  margin-top: clamp(20px, 3vh, 40px);
+  display: flex;
+  height: 56px;
+  width: 100%;
+  max-width: 280px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy-dark, #12173f);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.pcCta:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.pcCta:active {
+  transform: scale(0.98);
+}
+
+.pcScene {
+  position: relative;
+  flex: 1 1 56%;
+  overflow: hidden;
+}
+
+.pcSceneShade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(18, 23, 63, 0.6) 0%, rgba(18, 23, 63, 0) 22%);
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    display: none;
+  }
+
+  .pcWrap {
+    display: flex;
+    flex-direction: row;
+    height: 100dvh;
+    width: 100%;
+    overflow: hidden;
+  }
+}
