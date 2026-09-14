@@ -133,7 +133,7 @@ export default function TipsPage() {
   }, []);
 
   return (
-    <TabShell crumb="고객센터" title="일본 여행 팁">
+    <TabShell crumb="고객센터" title="일본 여행 팁" compactHeader>
       <StackHeader title="" backHref="/my/support" className="lg:hidden" />
       <div className="px-5 lg:max-w-xl lg:px-0">
         <h1 className="text-[22px] font-extrabold leading-snug text-navy-deep">

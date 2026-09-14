@@ -10,12 +10,12 @@ import { faqItems } from "@/lib/mockData";
 
 export default function SupportPage() {
   return (
-    <TabShell crumb="MY" title="고객센터">
+    <TabShell crumb="MY" title="고객센터" compactHeader>
       <Header title="고객센터" backHref="/my" className="lg:hidden" />
       <div className="screen-scroll">
         <div className="container">
           <div
-            className="text-[18px] lg:text-[23px] font-bold text-[var(--text)]"
+            className="text-[18px] lg:text-[19px] font-bold text-[var(--text)]"
             style={{ marginBottom: 10 }}
           >
             자주 묻는 질문
@@ -24,7 +24,7 @@ export default function SupportPage() {
             {faqItems.map((q, i) => (
               <div
                 key={q}
-                className="text-[14px] font-semibold lg:text-[19px]"
+                className="text-[14px] font-semibold lg:text-[15px]"
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -51,7 +51,7 @@ export default function SupportPage() {
           </div>
 
           <div
-            className="text-[13px] lg:text-[15px] text-muted text-center"
+            className="text-[13px] lg:text-[13px] text-muted text-center"
             style={{ marginTop: 20, lineHeight: 1.7 }}
           >
             이메일 support@path-travel.com

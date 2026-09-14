@@ -17,6 +17,10 @@ const PC_CONDITIONS = ["도보 최소", "환승 최소", "맛집 포함"];
 export default function AiRequestPage() {
   const router = useRouter();
   const [text, setText] = useState(DEFAULT_PROMPT);
+  // PC 프로토타입("PC AI 여행 만들기")은 모바일과 달리 예시 문구가 미리 채워져
+  // 있지 않고, 빈 입력창에 안내용 플레이스홀더만 보여줍니다. 모바일 입력값과
+  // 섞이지 않도록 별도 상태로 관리합니다.
+  const [pcText, setPcText] = useState("");
   const [tags, setTags] = useState(() => new Set(["도보 최소", "환승 최소", "가족 여행"]));
   const [pcTags, setPcTags] = useState(() => new Set(["도보 최소", "환승 최소"]));
   const [photos, setPhotos] = useState([null, null, null]);
@@ -67,6 +71,11 @@ export default function AiRequestPage() {
 
   function submit() {
     if (!text.trim()) return;
+    router.push("/ai/analyzing");
+  }
+
+  function submitPc() {
+    if (!pcText.trim()) return;
     router.push("/ai/analyzing");
   }
 
@@ -144,14 +153,23 @@ export default function AiRequestPage() {
         <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
           <div className="flex w-[500px] shrink-0 flex-col">
             <h2 className="text-[17px] font-bold text-navy-deep">AI에게 요청하는 내용</h2>
-            <div className="mt-3 rounded-2xl border border-line bg-white p-5">
+            <div className="relative mt-3 rounded-2xl border border-line bg-white p-5">
+              {/* 원본 목업처럼 입력 전에는 예시 문구(진하게) + "텍스트 입력"
+                  안내(연하게) 두 줄을 함께 보여주고, 실제 입력창 위에 겹쳐 둡니다. */}
+              {!pcText && (
+                <div className="pointer-events-none absolute inset-5 select-none">
+                  <p className="text-[15px] leading-7 text-navy-deep/70">
+                    &ldquo;내일 오전 9시 신주쿠에서 출발해서...
+                  </p>
+                  <p className="text-[15px] leading-7 text-muted">텍스트 입력</p>
+                </div>
+              )}
               <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
+                value={pcText}
+                onChange={(e) => setPcText(e.target.value)}
                 rows={5}
                 maxLength={500}
-                placeholder="텍스트 입력"
-                className="w-full resize-none text-[15px] leading-7 text-navy-deep outline-none placeholder:text-muted"
+                className="relative w-full resize-none bg-transparent text-[15px] leading-7 text-navy-deep outline-none"
               />
             </div>
 
@@ -210,7 +228,7 @@ export default function AiRequestPage() {
             </div>
 
             <button
-              onClick={submit}
+              onClick={submitPc}
               className="mt-7 flex h-14 w-full items-center justify-center rounded-2xl bg-navy text-[15px] font-bold text-white"
             >
               AI에게 일정 만들기 →
@@ -219,12 +237,10 @@ export default function AiRequestPage() {
 
           <div className="flex flex-1 flex-col">
             <h2 className="text-[19px] font-bold text-navy-deep">이런 여행은 어때요? (미리보기)</h2>
-            {/* 지도/AI 대화 화면과 동일한 패턴: 박스 자체는 화면을 꽉 채우지 않도록
-                여백을 두어 작게 보이게 하고, 안내 글자는 잘 보이도록 크게 표시합니다. */}
-            <div className="mt-3 flex flex-1 items-center justify-center p-6">
-              <div className="flex h-[420px] w-full max-w-[560px] items-center justify-center rounded-3xl bg-[#e4e9f4] text-[18px] font-bold text-muted">
-                지도 · 추천 코스 미리보기
-              </div>
+            {/* 원본 목업처럼 박스가 남은 영역을 가득 채워, 왼쪽 폼과 높이가
+                맞춰지도록 합니다. */}
+            <div className="mt-3 flex flex-1 items-center justify-center rounded-3xl bg-[#e4e9f4] text-[18px] font-bold text-muted">
+              지도 · 추천 코스 미리보기
             </div>
           </div>
         </div>

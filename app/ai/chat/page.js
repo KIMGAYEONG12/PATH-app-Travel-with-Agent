@@ -137,15 +137,16 @@ export default function AiChatPage() {
           <div className="flex flex-1 flex-col">
             <h2 className="text-[18px] font-bold text-navy-deep">실시간 반영되는 일정 · 지도</h2>
 
-            <div className="mt-4 flex h-[220px] shrink-0 flex-col items-center justify-center rounded-2xl bg-[#e4e9f4] text-center">
-              <p className="text-[16px] font-bold text-navy-deep">지도 화면 · 경로</p>
+            <div className="mt-4 flex h-[260px] shrink-0 flex-col items-center justify-center rounded-2xl bg-[#e4e9f4] text-center">
+              <p className="text-[16px] font-bold text-navy-deep">지도 화면 경로</p>
               <p className="mt-1 text-[14px] text-muted">대화 내용이 즉시 반영됨</p>
             </div>
 
-            <div className="mt-6 flex h-[130px] shrink-0 flex-col items-center justify-center rounded-2xl border border-line bg-white text-center">
+            <div className="mt-6 flex h-[190px] shrink-0 flex-col items-center justify-center rounded-2xl border border-line bg-white text-center">
               <p className="text-[16px] font-extrabold text-navy-deep">변경된 일정 요약</p>
               <p className="mt-2 text-[13px] text-muted">
-                {changedSchedule.before.title}: {changedSchedule.before.value} → {changedSchedule.after.value}
+                {changedSchedule.before.title}: {changedSchedule.before.value.replace(" 맛집", "")} →{" "}
+                {changedSchedule.after.value.replace(" 맛집", "")}
                 {" / "}
                 {changedSchedule.before.metaLabel} {changedSchedule.before.metaValue} → {changedSchedule.after.metaValue}
               </p>

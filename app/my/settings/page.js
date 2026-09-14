@@ -33,7 +33,7 @@ export default function SettingsPage() {
   const [tripAlert, setTripAlert] = useState(false);
 
   return (
-    <TabShell crumb="MY" title="설정">
+    <TabShell crumb="MY" title="설정" compactHeader>
       <Header title="설정" backHref="/my" className="lg:hidden" />
       <div className="screen-scroll">
         <div className="container">

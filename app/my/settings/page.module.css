@@ -63,10 +63,11 @@
 }
 
 /* PC 화면에서는 모바일 카드를 그대로 재사용하다 보니 글자가 작게 보여
-   가독성을 위해 데스크톱에서만 폰트를 키웁니다. */
+   가독성을 위해 데스크톱에서 폰트를 약간 키우되, 다른 탭보다는 한 단계
+   작게 유지합니다. */
 @media (min-width: 1024px) {
   .groupTitle {
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .card {
@@ -74,21 +75,21 @@
   }
 
   .row {
-    font-size: 19px;
-    padding: 20px 4px;
+    font-size: 15px;
+    padding: 18px 4px;
   }
 
   .switch {
-    width: 50px;
-    height: 28px;
+    width: 46px;
+    height: 26px;
   }
 
   .knob {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .knobOn {
-    transform: translateX(22px);
+    transform: translateX(20px);
   }
 }

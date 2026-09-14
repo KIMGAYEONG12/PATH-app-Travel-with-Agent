@@ -23,17 +23,12 @@ const MY_SUBMENU = [
   { href: "/login", label: "로그아웃" },
 ];
 
-// AI 여행 탭 아래에서 펼쳐지는 서브메뉴. 기존에는 "AI 여행 만들기"로만 진입할 수 있고
-// "AI와 대화하기"(app/ai/chat)로 갈 방법이 사이드바에 없었어서, MY와 같은 패턴으로 추가.
-const AI_SUBMENU = [
-  { href: "/ai", label: "여행 만들기" },
-  { href: "/ai/chat", label: "AI와 대화하기" },
-];
-
 // 서브메뉴가 있는 탭들 — key는 TABS의 href와 일치해야 함.
+// AI 여행 탭은 프로토타입("PC AI와 대화하기" 등)과 동일하게 서브메뉴 없이
+// 단일 항목으로 유지합니다. "AI와 대화하기" 화면은 여행 결과/홈 화면의
+// 버튼을 통해 진입할 수 있습니다.
 const SUBMENUS = {
   "/my": MY_SUBMENU,
-  "/ai": AI_SUBMENU,
 };
 
 // pathname과 가장 구체적으로(=href가 가장 긴 것으로) 일치하는 서브메뉴 항목을 찾는다.

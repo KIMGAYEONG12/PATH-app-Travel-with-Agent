@@ -18,7 +18,7 @@ export default function MyTripsPage() {
   const list = filter === "전체" ? trips : trips.filter((t) => t.status === filter);
 
   return (
-    <TabShell crumb="MY" title="내 여행 일정">
+    <TabShell crumb="MY" title="내 여행 일정" compactHeader>
       <Header title="내 여행 일정" backHref="/my" className="lg:hidden" />
       <div className="screen-scroll">
         <div className="container">
@@ -113,13 +113,13 @@ export default function MyTripsPage() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={t.cover} alt={t.title} className="absolute inset-0 h-full w-full object-cover" />
                     </div>
-                    <p className="mt-3 text-[15px] font-extrabold text-navy-deep">{t.title}</p>
-                    <p className="mt-0.5 text-[13px] text-muted">{t.range.replace(/\//g, ".")}</p>
+                    <p className="mt-3 text-[13px] font-extrabold text-navy-deep">{t.title}</p>
+                    <p className="mt-0.5 text-[12px] text-muted">{t.range.replace(/\//g, ".")}</p>
                   </Link>
                 ))}
                 <Link
                   href="/ai"
-                  className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-white text-[15px] font-bold text-muted transition hover:border-navy hover:text-navy"
+                  className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-white text-[13px] font-bold text-muted transition hover:border-navy hover:text-navy"
                 >
                   <Icon name="plus" size={20} />새 일정 만들기
                 </Link>

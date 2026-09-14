@@ -11,15 +11,24 @@ import BottomNav from "./BottomNav";
 // `hideMobileNav`: 뒤로가기가 있는 상세 화면(예: 이동 경로)에서 모바일
 // 하단 탭바를 감추고 싶을 때 true로 넘깁니다. 데스크톱 사이드바는 그대로
 // 유지됩니다(데스크톱은 항상 사이드바 내비게이션이라 탭바와 무관).
-export default function TabShell({ title, crumb, children, hideMobileNav = false }) {
+//
+// `compactHeader`: MY 관련 화면(내 여행 일정/프로필 수정/설정/고객센터 등)은
+// 다른 탭보다 데스크톱 헤더 글씨를 한 단계 작게 씁니다.
+export default function TabShell({ title, crumb, children, hideMobileNav = false, compactHeader = false }) {
   return (
     <div className="pz-shell flex min-h-dvh w-full flex-col bg-transparent lg:flex-row lg:bg-white">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
         {title && (
           <header className="hidden shrink-0 items-center gap-2 border-b border-line px-10 py-6 lg:flex">
-            {crumb && <span className="text-[16px] font-medium text-muted">{crumb}</span>}
-            <h1 className="text-[23px] font-bold text-navy-deep">{title}</h1>
+            {crumb && (
+              <span className={`font-medium text-muted ${compactHeader ? "text-[14px]" : "text-[16px]"}`}>
+                {crumb}
+              </span>
+            )}
+            <h1 className={`font-bold text-navy-deep ${compactHeader ? "text-[19px]" : "text-[23px]"}`}>
+              {title}
+            </h1>
           </header>
         )}
         <div className="flex flex-1 flex-col lg:items-start lg:bg-[#eef2fb]">

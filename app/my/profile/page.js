@@ -35,7 +35,7 @@ export default function ProfilePage() {
     : undefined;
 
   return (
-    <TabShell crumb="MY" title="프로필 수정">
+    <TabShell crumb="MY" title="프로필 수정" compactHeader>
       <Header title="프로필 수정" backHref="/my" className="lg:hidden" />
       <input
         ref={fileInputRef}
@@ -144,37 +144,37 @@ export default function ProfilePage() {
               )}
             </button>
             <div>
-              <p className="text-[17px] font-extrabold text-navy-deep">{name || "이름"}</p>
-              <p className="mt-0.5 text-[13px] text-muted">이메일</p>
+              <p className="text-[15px] font-extrabold text-navy-deep">{name || "이름"}</p>
+              <p className="mt-0.5 text-[12px] text-muted">이메일</p>
             </div>
           </div>
 
           <div className="flex w-[411px] flex-col gap-6">
             <div>
-              <label className="mb-2 block text-[14px] font-bold text-navy-deep">이름</label>
+              <label className="mb-2 block text-[13px] font-bold text-navy-deep">이름</label>
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-2xl border border-line bg-white px-5 py-3.5 text-[14.5px] text-navy-deep outline-none focus:border-navy"
+                className="w-full rounded-2xl border border-line bg-white px-5 py-3.5 text-[13.5px] text-navy-deep outline-none focus:border-navy"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-[14px] font-bold text-navy-deep">이메일</label>
+              <label className="mb-2 block text-[13px] font-bold text-navy-deep">이메일</label>
               <input
                 disabled
-                className="w-full rounded-2xl border border-[#c7ccd8] bg-[#dfe2e8] px-5 py-3.5 text-[14.5px] text-muted"
+                className="w-full rounded-2xl border border-[#c7ccd8] bg-[#dfe2e8] px-5 py-3.5 text-[13.5px] text-muted"
               />
             </div>
 
             <button
               onClick={handleSave}
-              className="flex h-14 w-full items-center justify-center rounded-2xl bg-navy text-[15px] font-bold text-white transition"
+              className="flex h-14 w-full items-center justify-center rounded-2xl bg-navy text-[14px] font-bold text-white transition"
             >
               {saved ? "저장됨 ✓" : "저장하기"}
             </button>
 
-            <p className="text-[13px] text-muted">가입일 2026.01.15 · 마지막 로그인 오늘</p>
+            <p className="text-[12px] text-muted">가입일 2026.01.15 · 마지막 로그인 오늘</p>
           </div>
         </div>
       </div>
