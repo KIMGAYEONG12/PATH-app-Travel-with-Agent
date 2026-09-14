@@ -67,11 +67,11 @@ function AiAnalyzingInner() {
   }
 
   return (
-    <div className="screen-scroll no-tab">
+    <div className="screen-scroll no-tab flex flex-col lg:min-h-[calc(100dvh-0px)] lg:flex-1 lg:justify-center">
       <Header title="AI 분석 중" backHref="/ai" />
-      <div className="container">
+      <div className="container lg:mx-auto lg:w-full lg:max-w-[440px] lg:px-0">
         {failed ? (
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "60px 10px 0" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "60px 10px 0" }} className="lg:pt-0">
             <div
               style={{
                 width: 72,
@@ -84,11 +84,12 @@ function AiAnalyzingInner() {
                 justifyContent: "center",
                 marginBottom: 20,
               }}
+              className="lg:h-20 lg:w-20"
             >
-              <Icon name="alert" size={34} strokeWidth={2.6} />
+              <Icon name="alert" size={34} strokeWidth={2.6} className="lg:h-9 lg:w-9" />
             </div>
-            <div className="h2">일정을 만들지 못했어요</div>
-            <div className="body-sm" style={{ marginTop: 6, marginBottom: 22 }}>
+            <div className="h2 lg:text-[24px]">일정을 만들지 못했어요</div>
+            <div className="body-sm lg:text-[15px]" style={{ marginTop: 6, marginBottom: 22 }}>
               네트워크 오류가 발생했어요
               <br />
               잠시 후 다시 시도해주세요
@@ -109,13 +110,13 @@ function AiAnalyzingInner() {
           </div>
         ) : (
           <>
-            <div style={{ display: "flex", justifyContent: "center", marginTop: 20, marginBottom: 14, color: "var(--navy)" }}>
-              <Icon name="sparkle" size={34} />
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 20, marginBottom: 14, color: "var(--navy)" }} className="lg:mt-0">
+              <Icon name="sparkle" size={34} className="lg:h-10 lg:w-10" />
             </div>
-            <div className="h2" style={{ textAlign: "center" }}>
+            <div className="h2 lg:text-center lg:text-[24px]" style={{ textAlign: "center" }}>
               여행 일정을 분석하고 있어요
             </div>
-            <div className="body-sm" style={{ textAlign: "center", marginTop: 4, marginBottom: 30 }}>
+            <div className="body-sm lg:text-[15px]" style={{ textAlign: "center", marginTop: 4, marginBottom: 30 }}>
               잠시만 기다려주세요.
             </div>
 

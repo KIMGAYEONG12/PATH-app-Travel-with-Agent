@@ -149,7 +149,7 @@ export default function FavoritesPage() {
                   — 5열보다 카드 폭이 넓어져 사진이 이전보다 조금 더 크게 보입니다. */}
               <div className="hidden grid-cols-4 gap-5 pb-10 lg:grid">
                 {visible.map((item) => (
-                  <div key={item.id}>
+                  <Link href={`/ai/place/${item.id}`} key={item.id} className="block">
                     <div className="relative">
                       <PlacePhoto
                         name={item.name}
@@ -160,7 +160,11 @@ export default function FavoritesPage() {
                         {categoryOf(item)}
                       </span>
                       <button
-                        onClick={() => toggle(item.id)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          toggle(item.id);
+                        }}
                         aria-label="찜 해제"
                         className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-accent-orange"
                       >
@@ -169,7 +173,7 @@ export default function FavoritesPage() {
                     </div>
                     <p className="mt-3 text-[15px] font-extrabold text-navy-deep">{item.name}</p>
                     <p className="mt-0.5 text-[13px] text-muted">{item.area}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </>

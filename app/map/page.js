@@ -170,8 +170,8 @@ function MapPageInner() {
               채우도록 여백을 최소화합니다. 전체 영역은 다른 화면들과 동일하게
               max-w-[1180px]로 제한해, 넓은 모니터에서 지도가 지나치게
               커지지 않도록 합니다. */}
-          <div className="flex flex-1 p-8">
-            <div className="flex flex-1 items-center justify-center rounded-3xl bg-[#e4e9f4] text-[22px] font-bold text-muted">
+          <div className="flex flex-1 py-8 pl-14 pr-8">
+            <div className="flex flex-1 items-center justify-center rounded-3xl bg-[#e4e9f4] text-[26px] font-bold text-muted">
               지도 화면
             </div>
           </div>
