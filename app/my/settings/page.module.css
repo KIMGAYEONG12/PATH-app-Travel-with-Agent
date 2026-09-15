@@ -10,7 +10,7 @@
   padding-left: 4px;
 }
 
-/* 프로토타입 "설정": 그룹별 흰색 라운드 카드 + 얇은 구분선 */
+/* 프로토타입 "설정": 그룹별 흰색 라운드 카드 + 얇은 구분선 (모바일 전용) */
 .card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -60,36 +60,4 @@
 
 .knobOn {
   transform: translateX(20px);
-}
-
-/* PC 화면에서는 모바일 카드를 그대로 재사용하다 보니 글자가 작게 보여
-   가독성을 위해 데스크톱에서 폰트를 약간 키우되, 다른 탭보다는 한 단계
-   작게 유지합니다. */
-@media (min-width: 1024px) {
-  .groupTitle {
-    font-size: 14px;
-  }
-
-  .card {
-    border-radius: 18px;
-  }
-
-  .row {
-    font-size: 15px;
-    padding: 18px 4px;
-  }
-
-  .switch {
-    width: 46px;
-    height: 26px;
-  }
-
-  .knob {
-    width: 20px;
-    height: 20px;
-  }
-
-  .knobOn {
-    transform: translateX(20px);
-  }
 }
