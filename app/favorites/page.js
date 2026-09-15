@@ -57,7 +57,7 @@ export default function FavoritesPage() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`shrink-0 rounded-full border px-4 py-2 text-[13px] font-bold transition lg:px-5 lg:py-2.5 lg:text-[14px] ${
+                  className={`shrink-0 rounded-full border px-4 py-2 text-[13px] font-bold transition ${
                     filter === f
                       ? "border-navy bg-navy text-white"
                       : "border-navy/40 bg-white text-navy"
@@ -72,7 +72,7 @@ export default function FavoritesPage() {
             <div className="relative hidden shrink-0 lg:block">
               <button
                 onClick={() => setSortOpen((v) => !v)}
-                className="flex items-center gap-1 text-[14px] font-semibold text-muted"
+                className="flex items-center gap-1 text-[13px] font-semibold text-muted"
               >
                 {sort}
                 <Icon
@@ -146,8 +146,8 @@ export default function FavoritesPage() {
               </div>
 
               {/* 데스크톱: 포토 카드 4열 그리드 (프로토타입 "PC 찜"과 동일한 열 수)
-                  — 이전보다 카드/글씨를 한 단계씩 더 키워 사진이 더 크게 보입니다. */}
-              <div className="hidden grid-cols-4 gap-6 pb-10 lg:grid">
+                  — 5열보다 카드 폭이 넓어져 사진이 이전보다 조금 더 크게 보입니다. */}
+              <div className="hidden grid-cols-4 gap-5 pb-10 lg:grid">
                 {visible.map((item) => (
                   <Link href={`/ai/place/${item.id}`} key={item.id} className="block">
                     <div className="relative">
@@ -156,7 +156,7 @@ export default function FavoritesPage() {
                         className="aspect-[3/2] w-full rounded-2xl"
                         labelClassName="hidden"
                       />
-                      <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1.5 text-[12px] font-bold text-navy-deep">
+                      <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-bold text-navy-deep">
                         {categoryOf(item)}
                       </span>
                       <button
@@ -166,13 +166,13 @@ export default function FavoritesPage() {
                           toggle(item.id);
                         }}
                         aria-label="찜 해제"
-                        className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-accent-orange"
+                        className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-accent-orange"
                       >
-                        <Icon name="heart" size={18} filled />
+                        <Icon name="heart" size={16} filled />
                       </button>
                     </div>
-                    <p className="mt-3 text-[17px] font-extrabold text-navy-deep">{item.name}</p>
-                    <p className="mt-0.5 text-[14px] text-muted">{item.area}</p>
+                    <p className="mt-3 text-[15px] font-extrabold text-navy-deep">{item.name}</p>
+                    <p className="mt-0.5 text-[13px] text-muted">{item.area}</p>
                   </Link>
                 ))}
               </div>

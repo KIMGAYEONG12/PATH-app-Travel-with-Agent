@@ -7,10 +7,9 @@
 //
 // - 모바일(<1024px): 기존 480px 세로형 레이아웃 그대로. 변경 없음.
 // - PC(≥1024px): 같은 구성을 PC 화면에 맞게 키운 버전.
-//     · 배경은 앱의 다른 PC 화면들과 같은 톤(단색 #eef2fb)을 그대로 씁니다.
-//       화면 전체를 채우는 그라디언트 블롭 + 좌상단 워드마크를 넣어봤더니
-//       카드 하나만 있는 화면에 장식이 붙어 오히려 어색하고 산만해 보여서,
-//       카드가 화면 중앙에 차분하게 떠 있는 단순한 구성으로 되돌렸습니다.
+//     · 배경 이미지는 넣지 않습니다 — 화면 전체를 채우는 단색 배경(#eef2fb)
+//       위에, 카드가 세로 정중앙에 옵니다. (사진 배경이 깔린 버전은 시안과
+//       다른 구성이라 사용하지 않습니다)
 //     · 카드 폭 640px, 흰 배경 + 라운드 + 그림자로 한 덩어리처럼 보이게 처리
 //       (태블릿처럼 어중간해 보이지 않도록 로고/제목/입력창/버튼을 PC
 //       기준으로 한 단계씩 더 크게)
@@ -137,13 +136,13 @@ export default function LoginPage() {
     <div className="pz-fullbleed">
       {/* 바깥 래퍼
           - 모바일: 기존 그대로 480px 세로형 (위에서부터 pt-16)
-          - PC: 화면 전체(단색 배경)를 쓰면서 카드를 세로 정중앙에 배치 */}
-      <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col bg-[#f7f9fd] px-7 pt-16 lg:max-w-none lg:items-center lg:justify-center lg:bg-[#eef2fb] lg:px-6 lg:py-16">
+          - PC: 화면 전체를 쓰면서 카드를 세로 정중앙에 배치 */}
+      <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col bg-[#f7f9fd] px-7 pt-16 lg:max-w-none lg:items-center lg:justify-center lg:bg-transparent lg:px-6 lg:py-16">
         {/* 카드
             - 모바일: 카드 테두리 없이 화면에 그대로 (기존 모양 유지)
             - PC: 시안(로그인.png/회원가입.png)과 같은 배경 없는 흰 카드를,
               태블릿처럼 어중간하지 않도록 640px 폭 + 넉넉한 여백으로 키운 버전 */}
-        <div className="flex w-full flex-col lg:max-w-[640px] lg:rounded-[32px] lg:border lg:border-line lg:bg-white lg:px-16 lg:py-14 lg:shadow-[0_24px_60px_rgba(30,39,97,0.12)]">
+        <div className="flex w-full flex-col lg:max-w-[640px] lg:rounded-[32px] lg:border lg:border-line lg:bg-white lg:px-16 lg:py-14 lg:shadow-[0_24px_60px_rgba(30,39,97,0.14)]">
           <div className="flex flex-col items-center">
             <Image
               src="/logo/logo-mark.svg"

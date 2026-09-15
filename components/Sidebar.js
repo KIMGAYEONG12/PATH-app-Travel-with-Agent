@@ -42,11 +42,11 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:flex w-72 shrink-0 flex-col border-r border-line bg-white px-7 py-9">
-      <Link href="/home" className="mb-12 block w-36">
+    <aside className="hidden lg:flex w-64 shrink-0 flex-col border-r border-line bg-white px-6 py-8">
+      <Link href="/home" className="mb-10 block w-28">
         <Image src="/logo/logo-text.svg" alt="PATH" width={270} height={63} className="w-full h-auto" />
       </Link>
-      <ul className="flex flex-col gap-1.5">
+      <ul className="flex flex-col gap-1">
         {TABS.map(({ href, label, icon: Icon, fixed }) => {
           const active = pathname === href || pathname.startsWith(href + "/");
           const submenu = SUBMENUS[href];
@@ -59,26 +59,26 @@ export default function Sidebar() {
           return (
             <li key={href} className="relative">
               {showIndicator && (
-                <span className="absolute -left-7 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-navy" />
+                <span className="absolute -left-6 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-navy" />
               )}
               <Link
                 href={href}
-                className={`flex items-center gap-3.5 rounded-xl px-3.5 py-3 text-[16px] font-semibold transition ${
+                className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold transition ${
                   fixed ? "text-navy" : active ? "text-navy" : "text-muted hover:text-navy"
                 }`}
               >
-                <Icon className="h-7 w-7" />
+                <Icon className="h-6 w-6" />
                 {label}
               </Link>
 
               {submenu && inSection && (
-                <ul className="mt-1 flex flex-col gap-0.5 pl-[52px]">
+                <ul className="mt-1 flex flex-col gap-0.5 pl-11">
                   {submenu.map((sub) => {
                     const subActive = sub.href === activeSubHref;
                     return (
                       <li key={sub.href} className="relative">
                         {subActive && (
-                          <span className="absolute -left-[76px] top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-navy" />
+                          <span className="absolute -left-[68px] top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-navy" />
                         )}
                         <Link
                           href={sub.href}

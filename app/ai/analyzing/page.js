@@ -1,7 +1,6 @@
 "use client";
 
 import { Suspense, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
@@ -68,18 +67,9 @@ function AiAnalyzingInner() {
   }
 
   return (
-    <div className="screen-scroll no-tab flex flex-col lg:min-h-[calc(100dvh-0px)] lg:flex-1">
-      <Header title="AI 분석 중" backHref="/ai" className="lg:hidden" />
-      {/* PC 헤더 — 노트북/컴퓨터 화면에서 다른 PC 화면들과 동일한 톤의
-          상단 바(뒤로가기 + 제목)를 씁니다. */}
-      <header className="hidden shrink-0 items-center gap-3 border-b border-line px-10 py-6 lg:flex">
-        <Link href="/ai" className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-[#eef2fb]">
-          <Icon name="chevronRight" size={18} className="rotate-180" />
-        </Link>
-        <h1 className="text-[23px] font-bold text-navy-deep">AI 분석 중</h1>
-      </header>
-      <div className="container flex-1 lg:flex lg:items-center lg:justify-center lg:bg-[#eef2fb] lg:px-10">
-        <div className="lg:mx-auto lg:w-full lg:max-w-[560px] lg:rounded-3xl lg:border lg:border-line lg:bg-white lg:px-14 lg:py-14">
+    <div className="screen-scroll no-tab flex flex-col lg:min-h-[calc(100dvh-0px)] lg:flex-1 lg:justify-center">
+      <Header title="AI 분석 중" backHref="/ai" />
+      <div className="container lg:mx-auto lg:w-full lg:max-w-[440px] lg:px-0">
         {failed ? (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "60px 10px 0" }} className="lg:pt-0">
             <div
@@ -140,7 +130,6 @@ function AiAnalyzingInner() {
             </Card>
           </>
         )}
-        </div>
       </div>
     </div>
   );
