@@ -25,7 +25,7 @@ const paths = [
   ],
 ];
 
-function BeforeAfter({ summary, before, after }) {
+function BeforeAfter({ summary, before, after, bannerFontSize = 14 }) {
   return (
     <>
       <div
@@ -33,7 +33,7 @@ function BeforeAfter({ summary, before, after }) {
           background: "var(--orange-soft)",
           color: "#f97316",
           fontWeight: 700,
-          fontSize: 14,
+          fontSize: bannerFontSize,
           padding: "18px 16px",
           borderRadius: 14,
           marginBottom: 18,
@@ -88,8 +88,9 @@ export default function AiChangedPage() {
         </div>
       </div>
 
-      {/* ---------- PC: 좌측 변경 전/후 비교 + 타임라인, 우측 지도 미리보기
-          (프로토타입 "PC 지도" / "PC AI와 대화하기"와 동일한 톤의 2단 구성) ---------- */}
+      {/* ---------- PC: 좌측 변경 전/후 비교 + 타임라인, 우측 지도 미리보기.
+          노트북/컴퓨터 화면을 가정해 1180px로 폭을 가두지 않고, 사이드바를
+          제외한 나머지 폭을 그대로 다 씁니다(태블릿처럼 잘려 보이지 않도록). ---------- */}
       <div className="hidden min-w-0 flex-1 flex-col lg:flex">
         <header className="flex shrink-0 items-center gap-3 border-b border-line px-10 py-6">
           <Link href="/ai/chat" className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-[#eef2fb]">
@@ -98,9 +99,9 @@ export default function AiChangedPage() {
           <h1 className="text-[23px] font-bold text-navy-deep">변경된 일정</h1>
         </header>
         <div className="flex flex-1 justify-start bg-[#eef2fb]">
-          <div className="flex w-full max-w-[1180px] flex-1">
-            <div className="flex w-[460px] shrink-0 flex-col gap-5 px-10 py-8">
-              <BeforeAfter summary={summary} before={before} after={after} />
+          <div className="flex w-full flex-1">
+            <div className="flex w-[480px] shrink-0 flex-col gap-5 px-10 py-8">
+              <BeforeAfter summary={summary} before={before} after={after} bannerFontSize={17} />
               <div className="rounded-3xl border border-line bg-white p-6">
                 <div style={{ fontWeight: 800, marginBottom: 14 }}>{date}</div>
                 <Timeline items={items} />
@@ -109,7 +110,7 @@ export default function AiChangedPage() {
                 <Button variant="primary">변경된 일정 확인하기</Button>
               </Link>
             </div>
-            <div className="flex flex-1 py-8 pl-14 pr-8">
+            <div className="flex flex-1 py-8 pl-14 pr-12">
               <div className="relative flex-1 overflow-hidden rounded-3xl">
                 <MapArt markers={markers} paths={paths} fill />
               </div>

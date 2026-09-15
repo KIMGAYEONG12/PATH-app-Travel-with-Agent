@@ -13,15 +13,6 @@ import { trips, favorites } from "@/lib/mockData";
 
 const FILTERS = ["전체", "예정", "진행중", "완료"];
 
-// 프로토타입("PC 내 여행일정")에서 카드 제목·기간이 목업용 예시 문구로
-// 표시되어 있어, 데스크톱 카드에서만 이 문구를 그대로 보여줍니다.
-// (모바일 리스트는 lib/mockData의 실제 제목·기간을 계속 사용합니다.)
-const PC_TRIP_LABELS = [
-  { title: "도쿄 2박 3일", range: "2026.04.12 - 04.14" },
-  { title: "우에노 공원", range: "2026.05.10 - 05.12" },
-  { title: "스카이트리", range: "2026.06.01 - 06.03" },
-];
-
 export default function MyTripsPage() {
   const [filter, setFilter] = useState("전체");
   const list = filter === "전체" ? trips : trips.filter((t) => t.status === filter);
@@ -56,9 +47,11 @@ export default function MyTripsPage() {
               }
             />
           ) : (
-            <>
-              {/* 모바일: 세로 리스트 */}
-              <div className="flex flex-col gap-5 mt-4 lg:hidden">
+            // 데스크톱에서도 사진 그리드가 아니라 모바일과 같은 세로 리스트를
+            // 그대로 보여줍니다(사이드바만 PC, 본문은 모바일 버전). 대신 화면이
+            // 넓은 만큼 글씨는 모바일보다 한 단계씩 더 크게 표시합니다.
+            <div className="mx-auto w-full lg:max-w-[640px]">
+              <div className="flex flex-col gap-5 mt-4">
                 {list.map((t) => (
                   <Link href="/ai/result" key={t.id}>
                     <Card
@@ -70,74 +63,49 @@ export default function MyTripsPage() {
                       }}
                     >
                       <div>
-                        <div className="body-sm">{t.range}</div>
-                        <div style={{ fontWeight: 800, fontSize: 16, marginTop: 6 }}>{t.title}</div>
+                        <div className="body-sm" style={{ fontSize: 14 }}>{t.range}</div>
+                        <div style={{ fontWeight: 800, fontSize: 18, marginTop: 6 }}>{t.title}</div>
                         <span
                           style={{
                             display: "inline-block",
                             marginTop: 16,
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: 700,
                             color: "var(--navy)",
                             border: "1.5px solid var(--navy)",
                             borderRadius: 999,
-                            padding: "6px 16px",
+                            padding: "7px 18px",
                           }}
                         >
                           {t.status}
                         </span>
                       </div>
-                      <Icon name="chevronRight" size={20} />
+                      <Icon name="chevronRight" size={22} />
                     </Card>
                   </Link>
                 ))}
               </div>
 
-              <Link href="/ai" className="lg:hidden">
-                <Button variant="primary" style={{ marginTop: 28 }} icon={<Icon name="plus" size={18} />}>
+              <Link href="/ai">
+                <Button variant="primary" style={{ marginTop: 28, fontSize: 17 }} icon={<Icon name="plus" size={18} />}>
                   새 여행 만들기
                 </Button>
               </Link>
 
-              <div className="h2 lg:hidden" style={{ marginTop: 32, marginBottom: 20 }}>
+              <div className="h2" style={{ marginTop: 32, marginBottom: 20, fontSize: 19 }}>
                 최근 저장한 장소
               </div>
-              <div className="flex flex-col gap-2.5 lg:hidden">
+              <div className="flex flex-col gap-2.5 pb-10">
                 {favorites.slice(0, 3).map((f) => (
                   <Link href={`/ai/place/${f.id}`} key={f.id}>
                     <Card style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontWeight: 700 }}>{f.name}</span>
+                      <span style={{ fontWeight: 700, fontSize: 17 }}>{f.name}</span>
                       <Icon name="chevronRight" size={18} />
                     </Card>
                   </Link>
                 ))}
               </div>
-
-              {/* 데스크톱: 표지 사진 + "새 일정 만들기" 카드가 함께 있는 그리드
-                  (프로토타입 "PC 내 여행일정") — 4열로 카드를 조금 더 크게 보여줍니다. */}
-              <div className="hidden grid-cols-4 gap-6 pb-10 lg:mt-4 lg:grid">
-                {list.map((t, i) => (
-                  <Link href="/ai/result" key={t.id} className="block">
-                    <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={t.cover} alt={t.title} className="absolute inset-0 h-full w-full object-cover" />
-                    </div>
-                    <p className="mt-3 text-[16px] font-extrabold text-navy-deep">
-                      {PC_TRIP_LABELS[i]?.title ?? t.title}
-                    </p>
-                    <p className="mt-0.5 text-[12px] text-muted">
-                      {PC_TRIP_LABELS[i]?.range ?? t.range.replace(/\//g, ".")}
-                    </p>
-                  </Link>
-                ))}
-                <Link
-                  href="/ai"
-                  className="flex aspect-[5/4] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-white text-[13px] font-bold text-muted transition hover:border-navy hover:text-navy"
-                >
-                  <Icon name="plus" size={20} />새 일정 만들기
-                </Link>
-              </div>
-            </>
+            </div>
           )}
         </div>
       </div>
