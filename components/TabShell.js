@@ -14,7 +14,17 @@ import BottomNav from "./BottomNav";
 //
 // `compactHeader`: MY 관련 화면(내 여행 일정/프로필 수정/설정/고객센터 등)은
 // 다른 탭보다 데스크톱 헤더 글씨를 한 단계 작게 씁니다.
-export default function TabShell({ title, crumb, children, hideMobileNav = false, compactHeader = false }) {
+//
+// `wide`: 내 여행 일정처럼 데스크톱 카드 그리드를 기본 캔버스 폭보다
+// 조금 더 크게 보여주고 싶은 화면에서 true로 넘깁니다.
+export default function TabShell({
+  title,
+  crumb,
+  children,
+  hideMobileNav = false,
+  compactHeader = false,
+  wide = false,
+}) {
   return (
     <div className="pz-shell flex min-h-dvh w-full flex-col bg-transparent lg:flex-row lg:bg-white">
       <Sidebar />
@@ -34,7 +44,12 @@ export default function TabShell({ title, crumb, children, hideMobileNav = false
         <div className="flex flex-1 flex-col lg:items-start lg:bg-[#eef2fb]">
           {/* lg:max-w — 큰 모니터에서 사진/카드가 가장자리까지 늘어나 지나치게
               커 보이지 않도록 프로토타입 캔버스 폭과 비슷한 값으로 제한합니다. */}
-          <div className="flex w-full flex-1 flex-col lg:mx-auto lg:max-w-[1180px] lg:px-10 lg:py-8">
+          <div
+            className={`flex w-full flex-1 flex-col lg:mx-auto lg:px-10 lg:py-8 ${
+              wide ? "lg:max-w-[1320px]" : "lg:max-w-[1180px]"
+            }`}
+          >
+
             {children}
           </div>
         </div>
