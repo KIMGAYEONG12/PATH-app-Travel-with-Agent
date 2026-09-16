@@ -123,7 +123,11 @@ export default function TipsPage() {
       if (TIPS.some((t) => t.id === hash)) {
         setOpenId(hash);
         requestAnimationFrame(() => {
-          document.getElementById(hash)?.scrollIntoView({ block: "center", behavior: "smooth" });
+          // 모바일/PC 두 레이아웃 중 실제로 화면에 보이는(display) 쪽만 스크롤합니다.
+          const mobileEl = document.getElementById(hash);
+          const pcEl = document.getElementById(`pc-${hash}`);
+          const target = pcEl && pcEl.offsetParent !== null ? pcEl : mobileEl;
+          target?.scrollIntoView({ block: "center", behavior: "smooth" });
         });
       }
     };
@@ -135,7 +139,9 @@ export default function TipsPage() {
   return (
     <TabShell crumb="고객센터" title="일본 여행 팁" compactHeader>
       <StackHeader title="" backHref="/my/support" className="lg:hidden" />
-      <div className="px-5 lg:max-w-xl lg:px-0">
+
+      {/* ---------- 모바일 ---------- */}
+      <div className="px-5 lg:hidden">
         <h1 className="text-[22px] font-extrabold leading-snug text-navy-deep">
           처음 가도 걱정 없는
           <br />
@@ -177,6 +183,58 @@ export default function TipsPage() {
         <div className="mt-6 rounded-2xl bg-[#fce9dd] p-5">
           <p className="text-[13px] font-extrabold text-accent-orange">PATH AI</p>
           <p className="mt-1 text-[13px] text-navy-deep">여행 조건에 맞는 교통 팁도 함께 알려드려요.</p>
+        </div>
+      </div>
+
+      {/* ---------- PC (프로토타입 "PC 고객센터 > 일본 여행 팁") ----------
+          모바일 카드를 그대로 늘린 게 아니라, 데스크톱 화면에 맞춰 카드 폭·
+          내부 여백·글자 크기를 다시 잡은 별도 레이아웃입니다. */}
+      <div className="hidden lg:block lg:w-[640px] lg:pb-10">
+        <h1 className="text-[26px] font-extrabold leading-snug text-navy-deep">
+          처음 가도 걱정 없는
+          <br />
+          <span className="text-navy">일본 대중교통 이용법</span>
+        </h1>
+
+        <div className="mt-7 flex flex-col gap-4">
+          {TIPS.map((t) => {
+            const open = openId === t.id;
+            return (
+              <div
+                key={t.id}
+                id={`pc-${t.id}`}
+                className="rounded-2xl border border-line bg-white p-6 transition-colors hover:border-navy/30"
+              >
+                <button
+                  onClick={() => setOpenId(open ? null : t.id)}
+                  className="flex w-full items-center gap-5 text-left"
+                >
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-[24px]">
+                    {t.emoji}
+                  </span>
+                  <span className="flex-1">
+                    <p className="text-[17px] font-bold text-navy-deep">{t.title}</p>
+                    <p className="mt-1 text-[14px] text-muted">{t.desc}</p>
+                  </span>
+                  <IconChevronRight
+                    className={`h-6 w-6 shrink-0 text-navy-deep/40 transition-transform ${
+                      open ? "rotate-90" : ""
+                    }`}
+                  />
+                </button>
+                {open && (
+                  <div className="mt-5 border-t border-line pt-5 text-[14px] leading-7 text-navy-deep/90">
+                    {t.content}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 rounded-2xl bg-[#fce9dd] p-6">
+          <p className="text-[14px] font-extrabold text-accent-orange">PATH AI</p>
+          <p className="mt-1.5 text-[14px] text-navy-deep">여행 조건에 맞는 교통 팁도 함께 알려드려요.</p>
         </div>
       </div>
     </TabShell>

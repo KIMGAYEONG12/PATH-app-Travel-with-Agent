@@ -1,0 +1,37 @@
+/* ------------------------------------------------------------------
+   스플래시 화면 — 화면 크기와 관계없이 항상 모바일 버전 그대로 보여줍니다.
+   (별도 PC 레이아웃 없음. app/onboarding, app/login과 마찬가지로
+   PC에서는 app/globals.css의 .app-viewport/.app-screen 공통 규칙에 따라
+   480px 모바일 프레임이 화면 중앙에 그대로 표시됩니다.)
+------------------------------------------------------------------- */
+
+.wrap {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  flex: 1;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 24px;
+  right: 24px;
+  z-index: 2;
+}
+
+.scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  background: linear-gradient(180deg, rgba(18, 23, 63, 0) 0%, rgba(18, 23, 63, 0.55) 100%);
+  z-index: 1;
+}
