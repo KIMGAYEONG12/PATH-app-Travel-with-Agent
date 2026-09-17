@@ -63,7 +63,7 @@ export default function Sidebar() {
               )}
               <Link
                 href={href}
-                className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold transition ${
+                className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[16px] font-semibold transition ${
                   fixed ? "text-navy" : active ? "text-navy" : "text-muted hover:text-navy"
                 }`}
               >

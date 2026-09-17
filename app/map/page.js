@@ -12,7 +12,13 @@ import Icon from "@/components/Icon";
 const FILTERS = ["전체", "관광지", "맛집", "숙소"];
 
 const PINS = [
-  { name: "스카이트리", tag: "관광지", top: "32%", left: "34%", color: "#2f6fb0" },
+  {
+    name: "스카이트리",
+    tag: "관광지",
+    top: "32%",
+    left: "34%",
+    color: "#2f6fb0",
+  },
   { name: "센소지", tag: "관광지", top: "40%", left: "20%", color: "#f4a268" },
   { name: "신주쿠", tag: "관광지", top: "56%", left: "22%", color: "#24a36a" },
 ];
@@ -33,7 +39,11 @@ function Pins({ big }) {
     >
       <span
         className="shrink-0 rounded-full border-2 border-white shadow"
-        style={{ backgroundColor: p.color, width: big ? 16 : 14, height: big ? 16 : 14 }}
+        style={{
+          backgroundColor: p.color,
+          width: big ? 16 : 14,
+          height: big ? 16 : 14,
+        }}
       />
       <span className="whitespace-nowrap rounded-full bg-white/90 px-2.5 py-1 text-[13px] font-bold text-navy-deep shadow">
         {p.name}
@@ -70,7 +80,7 @@ function MapPageInner() {
         const okF = filter === "전체" ? true : p.tag === filter;
         return okQ && okF;
       }),
-    [query, filter]
+    [query, filter],
   );
 
   return (
@@ -78,7 +88,10 @@ function MapPageInner() {
       <Sidebar />
 
       {/* ---------- 모바일: 지도만 크게 (하단 메뉴 없음) ---------- */}
-      <div className="relative w-full lg:hidden" style={{ height: "calc(100dvh - 92px)" }}>
+      <div
+        className="relative w-full lg:hidden"
+        style={{ height: "calc(100dvh - 92px)" }}
+      >
         {/* 지도를 상단바 바로 아래부터 전체 영역에 꽉 채움 */}
         <div className="map-grid absolute inset-0">
           <Pins />
@@ -96,7 +109,10 @@ function MapPageInner() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="어디로 여행할까요?"
                 className="w-full border-none bg-transparent text-[15px] text-navy-deep outline-none placeholder:text-muted focus:outline-none focus:ring-0"
-                style={{ WebkitTapHighlightColor: "transparent", boxShadow: "none" }}
+                style={{
+                  WebkitTapHighlightColor: "transparent",
+                  boxShadow: "none",
+                }}
               />
               <Icon name="search" size={20} className="shrink-0 text-navy" />
             </div>
@@ -125,7 +141,7 @@ function MapPageInner() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`rounded-full border px-4 py-2 text-[13px] font-bold transition ${
+                  className={`rounded-full border px-4 py-2 text-[15px] font-bold transition ${
                     filter === f
                       ? "border-navy bg-navy text-white"
                       : "border-navy/40 bg-white text-navy"
@@ -156,7 +172,9 @@ function MapPageInner() {
                       <span className="inline-block rounded-full bg-[#eef2fb] px-2.5 py-0.5 text-[11px] font-bold text-muted">
                         {p.tag}
                       </span>
-                      <p className="mt-1 text-[16px] font-extrabold text-navy-deep">{p.name}</p>
+                      <p className="mt-1 text-[16px] font-extrabold text-navy-deep">
+                        {p.name}
+                      </p>
                       <p className="mt-0.5 text-[10px] text-muted">{p.walk}</p>
                     </div>
                   </Link>
