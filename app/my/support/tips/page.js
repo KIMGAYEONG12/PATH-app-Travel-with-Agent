@@ -191,40 +191,43 @@ export default function TipsPage() {
           이상 키운 전용 PC 레이아웃으로 구성합니다. 내용은 하나도 자르지
           않고 그대로 유지합니다. */}
       <div className="hidden lg:block lg:pb-10">
-        <h1 className="text-[30px] font-extrabold leading-snug text-navy-deep">
+        <h1 className="text-[25px] font-extrabold leading-snug text-navy-deep">
           처음 가도 걱정 없는{" "}
           <span className="text-navy">일본 대중교통 이용법</span>
         </h1>
 
-        <div className="mt-8 flex flex-col gap-5">
+        <div className="mt-7 flex flex-col gap-4">
           {TIPS.map((t) => {
             const open = pcOpenId === t.id;
             return (
               <div
                 key={t.id}
                 id={t.id}
-                className="rounded-[22px] border border-line bg-white px-8 py-7 shadow-[var(--shadow-card)]"
+                className="rounded-[20px] border border-line bg-white px-7 py-6 shadow-[var(--shadow-card)]"
               >
                 <button
                   type="button"
                   onClick={() => setPcOpenId(open ? null : t.id)}
-                  className="flex w-full items-center gap-5 text-left"
+                  className="flex w-full items-center gap-4 text-left"
                 >
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-[28px]">
+                  <span
+                    className="flex shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-[22px]"
+                    style={{ height: 52, width: 52 }}
+                  >
                     {t.emoji}
                   </span>
                   <span className="flex-1">
-                    <p className="text-[20px] font-bold text-navy-deep">{t.title}</p>
-                    <p className="mt-1 text-[15px] text-muted">{t.desc}</p>
+                    <p className="text-[17px] font-bold text-navy-deep">{t.title}</p>
+                    <p className="mt-0.5 text-[13.5px] text-muted">{t.desc}</p>
                   </span>
                   <IconChevronRight
-                    className={`h-6 w-6 shrink-0 text-navy-deep/40 transition-transform ${
+                    className={`h-5 w-5 shrink-0 text-navy-deep/40 transition-transform ${
                       open ? "rotate-90" : ""
                     }`}
                   />
                 </button>
                 {open && (
-                  <div className="mt-6 border-t border-line pt-6 text-[16px] leading-8 text-navy-deep/90">
+                  <div className="mt-5 border-t border-line pt-5 text-[14px] leading-7 text-navy-deep/90">
                     {t.content}
                   </div>
                 )}
@@ -233,9 +236,9 @@ export default function TipsPage() {
           })}
         </div>
 
-        <div className="mt-6 rounded-[22px] bg-[#fce9dd] px-8 py-7">
-          <p className="text-[15px] font-extrabold text-accent-orange">PATH AI</p>
-          <p className="mt-1.5 text-[16px] leading-7 text-navy-deep">
+        <div className="mt-5 rounded-[20px] bg-[#fce9dd] px-7 py-6">
+          <p className="text-[13.5px] font-extrabold text-accent-orange">PATH AI</p>
+          <p className="mt-1 text-[14px] leading-6 text-navy-deep">
             여행 조건에 맞는 교통 팁도 함께 알려드려요.
           </p>
         </div>

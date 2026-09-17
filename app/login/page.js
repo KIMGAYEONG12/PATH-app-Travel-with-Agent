@@ -137,7 +137,7 @@ export default function LoginPage() {
       {/* 바깥 래퍼
           - 모바일: 기존 그대로 480px 세로형 (위에서부터 pt-16)
           - PC: 화면 전체를 쓰면서 카드를 세로 정중앙에 배치 */}
-      <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col bg-[#f7f9fd] px-7 pt-16 lg:max-w-none lg:items-center lg:justify-center lg:bg-transparent lg:px-6 lg:py-16">
+      <div className="mx-auto flex min-h-dvh w-full max-w-120 flex-col bg-[#f7f9fd] px-7 pt-16 lg:max-w-none lg:items-center lg:justify-center lg:bg-transparent lg:px-6 lg:py-16">
         {/* 카드
             - 모바일: 카드 테두리 없이 화면에 그대로 (기존 모양 유지)
             - PC: 시안(로그인.png/회원가입.png)과 같은 배경 없는 흰 카드를,

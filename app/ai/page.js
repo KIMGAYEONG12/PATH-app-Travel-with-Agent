@@ -184,7 +184,7 @@ export default function AiRequestPage() {
                 <button
                   key={tag}
                   onClick={() => togglePcTag(tag)}
-                  className={`rounded-full border px-4 py-2.5 text-[13px] font-semibold transition ${
+                  className={`rounded-full border px-4 py-2.5 text-[14px] font-semibold transition ${
                     pcTags.has(tag)
                       ? "border-[#dfe6fb] bg-[#dfe6fb] text-navy-deep"
                       : "border-line bg-white text-navy-deep/80"
@@ -252,7 +252,7 @@ export default function AiRequestPage() {
         </div>
       </div>
 
-      <div className="lg:hidden fixed bottom-0 left-1/2 z-30 w-full max-w-[480px] -translate-x-1/2">
+      <div className="lg:hidden fixed bottom-0 left-1/2 z-30 w-full max-w-120 -translate-x-1/2">
         <BottomNav />
       </div>
     </>

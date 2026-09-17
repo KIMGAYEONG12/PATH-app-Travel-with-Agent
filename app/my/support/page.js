@@ -118,10 +118,10 @@ export default function SupportPage() {
             모바일 카드를 그대로 늘려 쓰면 여백만 커 보이므로, 프로필 수정(PC)/설정(PC)
             화면과 같은 톤으로 별도 구성합니다. 자주 묻는 질문은 실제로 클릭하면
             펼쳐지며 답변이 나오고, 1:1 문의하기는 InquiryModal을 실제로 엽니다. */}
-        <div className="hidden lg:flex lg:w-full lg:max-w-[820px] lg:flex-col lg:gap-9 lg:pb-10">
+        <div className="hidden lg:flex lg:w-full lg:max-w-[740px] lg:flex-col lg:gap-8 lg:pb-10">
           <div>
-            <div className="mb-4 text-[20px] font-extrabold text-navy-deep">자주 묻는 질문</div>
-            <div className="overflow-hidden rounded-[20px] border border-line bg-white shadow-[var(--shadow-card)]">
+            <div className="mb-3.5 text-[17px] font-extrabold text-navy-deep">자주 묻는 질문</div>
+            <div className="overflow-hidden rounded-[18px] border border-line bg-white shadow-[var(--shadow-card)]">
               {FAQS.map((f, i) => {
                 const open = openId === f.id;
                 return (
@@ -129,19 +129,19 @@ export default function SupportPage() {
                     <button
                       type="button"
                       onClick={() => setOpenId(open ? null : f.id)}
-                      className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left text-[17px] font-bold text-navy-deep transition hover:bg-[#f7f9fd]"
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-navy-deep transition hover:bg-[#f7f9fd]"
                     >
                       {f.q}
                       <Icon
                         name="chevronRight"
-                        size={20}
+                        size={18}
                         className={`shrink-0 text-muted transition-transform ${
                           open ? "rotate-90" : ""
                         }`}
                       />
                     </button>
                     {open && (
-                      <div className="px-7 pb-7 text-[15px] leading-7 text-muted">{f.a}</div>
+                      <div className="px-6 pb-6 text-[13.5px] leading-6 text-muted">{f.a}</div>
                     )}
                   </div>
                 );
@@ -149,27 +149,27 @@ export default function SupportPage() {
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-3.5">
             <Link href="/my/support/tips" className="flex-1">
               <button
                 type="button"
-                className="flex h-16 w-full items-center justify-center gap-2.5 rounded-2xl border border-line bg-white text-[16px] font-bold text-navy-deep transition hover:bg-[#f5f7fc]"
+                className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-line bg-white text-[14.5px] font-bold text-navy-deep transition hover:bg-[#f5f7fc]"
               >
-                <Icon name="sparkle" size={19} />
+                <Icon name="sparkle" size={17} />
                 일본 여행 팁
               </button>
             </Link>
             <button
               type="button"
               onClick={() => setInquiryOpen(true)}
-              className="flex h-16 flex-1 items-center justify-center gap-2.5 rounded-2xl bg-navy text-[16px] font-bold text-white transition hover:opacity-90"
+              className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl bg-navy text-[14.5px] font-bold text-white transition hover:opacity-90"
             >
-              <Icon name="headset" size={19} />
+              <Icon name="headset" size={17} />
               1:1 문의하기
             </button>
           </div>
 
-          <div className="rounded-2xl bg-[#eef2fb] px-7 py-6 text-center text-[15px] leading-8 text-muted">
+          <div className="rounded-2xl bg-[#eef2fb] px-6 py-5 text-center text-[13.5px] leading-7 text-muted">
             이메일 <span className="font-bold text-navy-deep">support@path-travel.com</span>
             <br />
             운영시간 평일 09:00 - 18:00 (점심시간 12:00-13:00)

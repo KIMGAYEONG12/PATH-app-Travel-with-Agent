@@ -99,7 +99,7 @@ function MapPageInner() {
 
         {/* 상단바(로고)만 배경이 있고, 검색창은 지도 위에 떠 있는 형태 */}
         <div className="absolute inset-x-0 top-0 z-10">
-          <div className="bg-[var(--bg)]">
+          <div className="bg-(--bg)">
             <LogoHeader />
           </div>
           <div className="px-5 pb-4 pt-3">
@@ -126,7 +126,7 @@ function MapPageInner() {
           <h1 className="text-[23px] font-bold text-navy-deep">지도</h1>
         </header>
         <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
-          <div className="flex w-[420px] shrink-0 flex-col gap-5">
+          <div className="flex w-105 shrink-0 flex-col gap-5">
             <div className="flex items-center gap-3 rounded-2xl border border-line bg-white px-5 py-3.5 text-muted">
               <input
                 value={query}
@@ -192,7 +192,7 @@ function MapPageInner() {
       </div>
 
       {/* 모바일 하단 탭 */}
-      <div className="lg:hidden fixed bottom-0 left-1/2 z-30 w-full max-w-[480px] -translate-x-1/2">
+      <div className="lg:hidden fixed bottom-0 left-1/2 z-30 w-full max-w-120 -translate-x-1/2">
         <BottomNav />
       </div>
     </div>

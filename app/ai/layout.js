@@ -13,7 +13,7 @@ export default function AiLayout({ children }) {
   const wide = WIDE_ROUTES.includes(pathname);
 
   return (
-    <div className="pz-shell flex min-h-dvh w-full bg-[var(--bg)] lg:bg-white">
+    <div className="pz-shell flex min-h-dvh w-full bg-(--bg) lg:bg-white">
       <Sidebar />
       <div
         className={

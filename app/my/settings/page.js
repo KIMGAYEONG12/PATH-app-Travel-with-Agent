@@ -56,8 +56,8 @@ function PCSwitch({ on, onToggle }) {
 function PCSection({ title, children }) {
   return (
     <div>
-      <div className="mb-3 text-[16px] font-bold text-muted">{title}</div>
-      <div className="rounded-[20px] border border-line bg-white px-8 shadow-[var(--shadow-card)]">
+      <div className="mb-3.5 text-[17px] font-bold text-muted">{title}</div>
+      <div className="rounded-[20px] border border-line bg-white px-9 shadow-[var(--shadow-card)]">
         {children}
       </div>
     </div>
@@ -138,7 +138,7 @@ export default function SettingsPage() {
             프로토타입에는 "PC 설정" 시안이 따로 없어서, 같은 MY 하위 화면인
             "PC 프로필 수정" 시안의 톤(좌측 정렬 폼, 넉넉한 여백/폰트)에 맞춰
             데스크톱 전용으로 구성했습니다. */}
-        <div className="hidden lg:flex lg:w-full lg:max-w-[680px] lg:flex-col lg:gap-9 lg:pb-10">
+        <div className="hidden lg:flex lg:w-full lg:max-w-[760px] lg:flex-col lg:gap-10 lg:pb-10">
           <PCSection title="알림">
             <PCRow
               label="푸시 알림"

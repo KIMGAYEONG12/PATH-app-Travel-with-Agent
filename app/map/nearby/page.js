@@ -31,7 +31,7 @@ export default function NearbyPage() {
   }
 
   return (
-    <div className="pz-shell flex min-h-dvh w-full bg-[var(--bg)] lg:bg-white">
+    <div className="pz-shell flex min-h-dvh w-full bg-(--bg) lg:bg-white">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col lg:mx-auto lg:max-w-2xl lg:border-x lg:border-line">
         <header className="hidden shrink-0 items-center gap-2 border-b border-line px-10 py-6 lg:flex">

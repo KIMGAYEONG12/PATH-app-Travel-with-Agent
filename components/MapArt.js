@@ -11,7 +11,7 @@ export default function MapArt({
   height = 320,
   className = "",
   viewBox = "0 0 360 320",
-  preserveAspectRatio = "xMidYMid slice",
+  preserveAspectRatio = "xMidYMid meet",
   // fill=true면 부모(칸이 position:relative인 요소)를 완전히 덮는
   // position:absolute; inset:0 요소로 렌더링합니다. 이전에는 호출부에서
   // className="absolute inset-0"를 넘겨 처리했는데, 이 컴포넌트 자체의

@@ -102,7 +102,7 @@ export default function AiRoutePage() {
         </header>
         <div className="flex flex-1 justify-start bg-[#eef2fb]">
           <div className="flex w-full max-w-[1180px] flex-1">
-            <div className="flex w-[420px] shrink-0 flex-col px-10 py-8">
+            <div className="flex w-105 shrink-0 flex-col px-10 py-8">
               <div className="rounded-3xl border border-line bg-white p-6">
                 <RouteDetailCard />
               </div>

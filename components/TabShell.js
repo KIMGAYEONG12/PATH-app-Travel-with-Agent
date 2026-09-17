@@ -40,7 +40,7 @@ export default function TabShell({ title, crumb, children, hideMobileNav = false
         </div>
       </div>
       {!hideMobileNav && (
-        <div className="lg:hidden fixed bottom-0 left-1/2 z-30 w-full max-w-[480px] -translate-x-1/2">
+        <div className="lg:hidden fixed bottom-0 left-1/2 z-30 w-full max-w-120 -translate-x-1/2">
           <BottomNav />
         </div>
       )}

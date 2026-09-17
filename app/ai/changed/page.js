@@ -97,22 +97,20 @@ export default function AiChangedPage() {
           </Link>
           <h1 className="text-[23px] font-bold text-navy-deep">변경된 일정</h1>
         </header>
-        <div className="flex flex-1 justify-start bg-[#eef2fb]">
-          <div className="flex w-full max-w-[1180px] flex-1">
-            <div className="flex w-[460px] shrink-0 flex-col gap-5 px-10 py-8">
-              <BeforeAfter summary={summary} before={before} after={after} />
-              <div className="rounded-3xl border border-line bg-white p-6">
-                <div style={{ fontWeight: 800, marginBottom: 14 }}>{date}</div>
-                <Timeline items={items} />
-              </div>
-              <Link href="/ai/result">
-                <Button variant="primary">변경된 일정 확인하기</Button>
-              </Link>
+        <div className="flex flex-1 bg-[#eef2fb]">
+          <div className="flex w-[460px] shrink-0 flex-col gap-5 px-10 py-8">
+            <BeforeAfter summary={summary} before={before} after={after} />
+            <div className="rounded-3xl border border-line bg-white p-6">
+              <div style={{ fontWeight: 800, marginBottom: 14 }}>{date}</div>
+              <Timeline items={items} />
             </div>
-            <div className="flex flex-1 py-8 pl-14 pr-8">
-              <div className="relative flex-1 overflow-hidden rounded-3xl">
-                <MapArt markers={markers} paths={paths} fill />
-              </div>
+            <Link href="/ai/result">
+              <Button variant="primary">변경된 일정 확인하기</Button>
+            </Link>
+          </div>
+          <div className="flex flex-1 py-8 pl-14 pr-10">
+            <div className="relative flex-1 overflow-hidden rounded-3xl">
+              <MapArt markers={markers} paths={paths} fill />
             </div>
           </div>
         </div>
