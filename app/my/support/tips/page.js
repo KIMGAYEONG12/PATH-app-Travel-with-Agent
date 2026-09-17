@@ -114,6 +114,7 @@ const TIPS = [
 
 export default function TipsPage() {
   const [openId, setOpenId] = useState(null);
+  const [pcOpenId, setPcOpenId] = useState(TIPS[0].id);
 
   // URL 해시(#transit-pass 등)로 들어오면 해당 항목을 펼치고 그 위치로 스크롤합니다.
   // (홈의 "교통패스 알아보기" → 교통패스 항목이 열린 채로 보이도록)
@@ -122,6 +123,7 @@ export default function TipsPage() {
       const hash = window.location.hash.replace("#", "");
       if (TIPS.some((t) => t.id === hash)) {
         setOpenId(hash);
+        setPcOpenId(hash);
         requestAnimationFrame(() => {
           document.getElementById(hash)?.scrollIntoView({ block: "center", behavior: "smooth" });
         });
@@ -135,7 +137,9 @@ export default function TipsPage() {
   return (
     <TabShell crumb="고객센터" title="일본 여행 팁" compactHeader>
       <StackHeader title="" backHref="/my/support" className="lg:hidden" />
-      <div className="px-5 lg:max-w-xl lg:px-0">
+
+      {/* ---------- 모바일 (<1024px): 기존 목업과 동일한 아코디언 리스트 ---------- */}
+      <div className="px-5 lg:hidden">
         <h1 className="text-[22px] font-extrabold leading-snug text-navy-deep">
           처음 가도 걱정 없는
           <br />
@@ -177,6 +181,63 @@ export default function TipsPage() {
         <div className="mt-6 rounded-2xl bg-[#fce9dd] p-5">
           <p className="text-[13px] font-extrabold text-accent-orange">PATH AI</p>
           <p className="mt-1 text-[13px] text-navy-deep">여행 조건에 맞는 교통 팁도 함께 알려드려요.</p>
+        </div>
+      </div>
+
+      {/* ---------- PC (≥1024px): 전용 넓은 레이아웃, 큰 폰트 ----------
+          모바일 카드를 그대로 늘리면 여백만 커지고, 좁은 폭(max-w-xl)으로
+          제한하면 데스크톱에서도 태블릿처럼 좁고 잘려 보였습니다. 사이드바
+          옆 전체 폭(TabShell 최대 1180px)을 그대로 쓰고, 글자 크기도 한 단계
+          이상 키운 전용 PC 레이아웃으로 구성합니다. 내용은 하나도 자르지
+          않고 그대로 유지합니다. */}
+      <div className="hidden lg:block lg:pb-10">
+        <h1 className="text-[30px] font-extrabold leading-snug text-navy-deep">
+          처음 가도 걱정 없는{" "}
+          <span className="text-navy">일본 대중교통 이용법</span>
+        </h1>
+
+        <div className="mt-8 flex flex-col gap-5">
+          {TIPS.map((t) => {
+            const open = pcOpenId === t.id;
+            return (
+              <div
+                key={t.id}
+                id={t.id}
+                className="rounded-[22px] border border-line bg-white px-8 py-7 shadow-[var(--shadow-card)]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setPcOpenId(open ? null : t.id)}
+                  className="flex w-full items-center gap-5 text-left"
+                >
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#dfe6fb] text-[28px]">
+                    {t.emoji}
+                  </span>
+                  <span className="flex-1">
+                    <p className="text-[20px] font-bold text-navy-deep">{t.title}</p>
+                    <p className="mt-1 text-[15px] text-muted">{t.desc}</p>
+                  </span>
+                  <IconChevronRight
+                    className={`h-6 w-6 shrink-0 text-navy-deep/40 transition-transform ${
+                      open ? "rotate-90" : ""
+                    }`}
+                  />
+                </button>
+                {open && (
+                  <div className="mt-6 border-t border-line pt-6 text-[16px] leading-8 text-navy-deep/90">
+                    {t.content}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 rounded-[22px] bg-[#fce9dd] px-8 py-7">
+          <p className="text-[15px] font-extrabold text-accent-orange">PATH AI</p>
+          <p className="mt-1.5 text-[16px] leading-7 text-navy-deep">
+            여행 조건에 맞는 교통 팁도 함께 알려드려요.
+          </p>
         </div>
       </div>
     </TabShell>

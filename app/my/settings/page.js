@@ -4,6 +4,7 @@ import { useState } from "react";
 import TabShell from "@/components/TabShell";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
+import InquiryModal from "@/components/InquiryModal";
 import styles from "./page.module.css";
 
 function Switch({ on, onToggle }) {
@@ -39,13 +40,13 @@ function PCSwitch({ on, onToggle }) {
       onClick={onToggle}
       role="switch"
       aria-checked={on}
-      className={`relative h-8 w-[52px] shrink-0 rounded-full transition ${
+      className={`relative h-9 w-[58px] shrink-0 rounded-full transition ${
         on ? "bg-navy" : "bg-[#d9e0f2]"
       }`}
     >
       <span
-        className={`absolute top-1 left-1 h-6 w-6 rounded-full bg-white shadow transition ${
-          on ? "translate-x-[22px]" : "translate-x-0"
+        className={`absolute top-1 left-1 h-7 w-7 rounded-full bg-white shadow transition ${
+          on ? "translate-x-[24px]" : "translate-x-0"
         }`}
       />
     </button>
@@ -55,8 +56,8 @@ function PCSwitch({ on, onToggle }) {
 function PCSection({ title, children }) {
   return (
     <div>
-      <div className="mb-3 text-[14px] font-bold text-muted">{title}</div>
-      <div className="rounded-[20px] border border-line bg-white px-7 shadow-[var(--shadow-card)]">
+      <div className="mb-3 text-[16px] font-bold text-muted">{title}</div>
+      <div className="rounded-[20px] border border-line bg-white px-8 shadow-[var(--shadow-card)]">
         {children}
       </div>
     </div>
@@ -66,7 +67,7 @@ function PCSection({ title, children }) {
 function PCRow({ label, labelClassName = "", right, last = false }) {
   return (
     <div
-      className={`flex items-center justify-between py-5 text-[16px] font-semibold ${
+      className={`flex items-center justify-between py-6 text-[18px] font-semibold ${
         last ? "" : "border-b border-line"
       } ${labelClassName}`}
     >
@@ -79,6 +80,7 @@ function PCRow({ label, labelClassName = "", right, last = false }) {
 export default function SettingsPage() {
   const [push, setPush] = useState(true);
   const [tripAlert, setTripAlert] = useState(false);
+  const [inquiryOpen, setInquiryOpen] = useState(false);
 
   return (
     <TabShell crumb="MY" title="설정" compactHeader>
@@ -109,10 +111,23 @@ export default function SettingsPage() {
           </Section>
 
           <Section title="기타">
-            <div className={styles.row}>
+            <button
+              type="button"
+              onClick={() => setInquiryOpen(true)}
+              className={styles.row}
+              style={{
+                width: "100%",
+                textAlign: "left",
+                background: "none",
+                border: "none",
+                color: "inherit",
+                fontFamily: "inherit",
+                cursor: "pointer",
+              }}
+            >
               문의하기
               <Icon name="chevronRight" size={16} />
-            </div>
+            </button>
             <div className={styles.row} style={{ color: "var(--red)" }}>
               회원 탈퇴
             </div>
@@ -123,7 +138,7 @@ export default function SettingsPage() {
             프로토타입에는 "PC 설정" 시안이 따로 없어서, 같은 MY 하위 화면인
             "PC 프로필 수정" 시안의 톤(좌측 정렬 폼, 넉넉한 여백/폰트)에 맞춰
             데스크톱 전용으로 구성했습니다. */}
-        <div className="hidden lg:flex lg:w-[600px] lg:flex-col lg:gap-9 lg:pb-10">
+        <div className="hidden lg:flex lg:w-full lg:max-w-[680px] lg:flex-col lg:gap-9 lg:pb-10">
           <PCSection title="알림">
             <PCRow
               label="푸시 알림"
@@ -139,24 +154,28 @@ export default function SettingsPage() {
           <PCSection title="계정">
             <PCRow
               label="언어 설정"
-              right={<span className="text-[15px] font-medium text-muted">한국어</span>}
+              right={<span className="text-[16px] font-medium text-muted">한국어</span>}
             />
             <PCRow
               label="비밀번호 변경"
-              right={<Icon name="chevronRight" size={18} className="text-muted" />}
+              right={<Icon name="chevronRight" size={20} className="text-muted" />}
               last
             />
           </PCSection>
 
           <PCSection title="기타">
-            <PCRow
-              label="문의하기"
-              right={<Icon name="chevronRight" size={18} className="text-muted" />}
-            />
+            <button type="button" onClick={() => setInquiryOpen(true)} className="w-full">
+              <PCRow
+                label="문의하기"
+                right={<Icon name="chevronRight" size={20} className="text-muted" />}
+              />
+            </button>
             <PCRow label="회원 탈퇴" labelClassName="text-red" last />
           </PCSection>
         </div>
       </div>
+
+      <InquiryModal open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </TabShell>
   );
 }
