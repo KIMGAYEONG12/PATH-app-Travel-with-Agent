@@ -120,73 +120,85 @@ function MapPageInner() {
         </div>
       </div>
 
-      {/* ---------- PC: 좌측 리스트 + 우측 지도 (프로토타입 "PC 지도") ---------- */}
+      {/* ---------- PC: 좌측 리스트 + 우측 지도 (프로토타입 "PC 지도") ----------
+          다른 데스크톱 화면들(TabShell 기반: 홈/찜/MY 등)과 동일하게 본문을
+          max-w-[1180px]로 제한합니다. 이 제한이 빠져 있으면 넓은 모니터에서
+          지도 영역이 브라우저 오른쪽 끝까지 늘어나 버려(예전 스크린샷) 디자인
+          시안과 다르게 보였습니다. */}
       <div className="hidden min-w-0 flex-1 flex-col lg:flex">
         <header className="flex shrink-0 items-center border-b border-line px-10 py-6">
           <h1 className="text-[23px] font-bold text-navy-deep">지도</h1>
         </header>
-        <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
-          <div className="flex w-105 shrink-0 flex-col gap-5">
-            <div className="flex items-center gap-3 rounded-2xl border border-line bg-white px-5 py-3.5 text-muted">
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="검색"
-                className="w-full bg-transparent text-[15px] text-navy-deep outline-none placeholder:text-muted"
-              />
-              <Icon name="search" size={18} />
-            </div>
-            <div className="flex gap-2">
-              {FILTERS.map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`rounded-full border px-4 py-2 text-[15px] font-bold transition ${
-                    filter === f
-                      ? "border-navy bg-navy text-white"
-                      : "border-navy/40 bg-white text-navy"
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-4">
-              {filteredList.length === 0 ? (
-                <p className="py-10 text-center text-[13px] text-muted">
-                  &ldquo;{query}&rdquo; 검색 결과가 없어요.
-                </p>
-              ) : (
-                filteredList.map((p) => (
-                  <Link
-                    key={p.name}
-                    href="/map/route"
-                    className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4"
+        <div className="flex flex-1 bg-[#eef2fb]">
+          {/* justify-center와 mx-auto를 쓰면 넓은 모니터에서 이 박스가
+              남는 공간의 가운데로 밀려나 좌우에 똑같이 큰 여백이 생겨
+              버립니다(디자인 시안과 다르게 보였던 지점). 시안처럼 사이드바에
+              바로 붙어 시작하고, 오른쪽에만 여백이 남도록 정렬을 왼쪽
+              기본값(justify-start)으로 둡니다. */}
+          <div className="flex w-full max-w-[1180px] flex-1 gap-8 px-10 py-8">
+            <div className="flex w-105 shrink-0 flex-col gap-5">
+              <div className="flex items-center gap-3 rounded-2xl border border-line bg-white px-5 py-3.5 text-muted">
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="검색"
+                  className="w-full bg-transparent text-[15px] text-navy-deep outline-none placeholder:text-muted"
+                />
+                <Icon name="search" size={18} />
+              </div>
+              <div className="flex gap-2">
+                {FILTERS.map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className={`rounded-full border px-4 py-2 text-[15px] font-bold transition ${
+                      filter === f
+                        ? "border-navy bg-navy text-white"
+                        : "border-navy/40 bg-white text-navy"
+                    }`}
                   >
-                    <PlacePhoto
-                      name={p.name}
-                      className="h-24 w-24 shrink-0 rounded-2xl"
-                      labelClassName="hidden"
-                    />
-                    <div>
-                      <span className="inline-block rounded-full bg-[#eef2fb] px-2.5 py-0.5 text-[11px] font-bold text-muted">
-                        {p.tag}
-                      </span>
-                      <p className="mt-1 text-[16px] font-extrabold text-navy-deep">
-                        {p.name}
-                      </p>
-                      <p className="mt-0.5 text-[10px] text-muted">{p.walk}</p>
-                    </div>
-                  </Link>
-                ))
-              )}
+                    {f}
+                  </button>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4">
+                {filteredList.length === 0 ? (
+                  <p className="py-10 text-center text-[13px] text-muted">
+                    &ldquo;{query}&rdquo; 검색 결과가 없어요.
+                  </p>
+                ) : (
+                  filteredList.map((p) => (
+                    <Link
+                      key={p.name}
+                      href="/map/route"
+                      className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4"
+                    >
+                      <PlacePhoto
+                        name={p.name}
+                        className="h-24 w-24 shrink-0 rounded-2xl"
+                        labelClassName="hidden"
+                      />
+                      <div>
+                        <span className="inline-block rounded-full bg-[#eef2fb] px-2.5 py-0.5 text-[11px] font-bold text-muted">
+                          {p.tag}
+                        </span>
+                        <p className="mt-1 text-[16px] font-extrabold text-navy-deep">
+                          {p.name}
+                        </p>
+                        <p className="mt-0.5 text-[10px] text-muted">{p.walk}</p>
+                      </div>
+                    </Link>
+                  ))
+                )}
+              </div>
             </div>
-          </div>
-          {/* PC 지도 미리보기 — 프로토타입 "PC 지도"와 동일하게 실제 지도 연동 전
-              단순 플레이스홀더로 표시. 남은 영역을 flex-1로 가득 채워 화면
-              오른쪽 끝까지 지도가 이어지도록 합니다. */}
-          <div className="flex flex-1 items-center justify-center rounded-3xl bg-[#e4e9f4] text-[26px] font-bold text-muted">
-            지도 화면
+            {/* PC 지도 미리보기 — 프로토타입 "PC 지도"와 동일하게 실제 지도 연동 전
+                단순 플레이스홀더로 표시. 남은 영역을 flex-1로 채우되, 위의
+                max-w-[1180px] 제한 덕분에 디자인 시안처럼 오른쪽에 여백이
+                남고 정사각형에 가까운 비율로 보입니다. */}
+            <div className="flex flex-1 items-center justify-center self-stretch rounded-3xl bg-[#e4e9f4] text-[26px] font-bold text-muted">
+              지도 화면
+            </div>
           </div>
         </div>
       </div>

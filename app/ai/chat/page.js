@@ -96,10 +96,17 @@ export default function AiChatPage() {
           <h1 className="text-[23px] font-bold text-navy-deep">AI와 대화하기</h1>
         </header>
 
-        <div className="flex flex-1 gap-8 bg-[#eef2fb] px-10 py-8">
+        {/* 넓은 모니터에서 이 영역이 끝까지 늘어나면 원본 시안과 달리
+            오른쪽 카드들이 지나치게 넓어져 보였습니다. map 화면과 동일하게
+            max-w-[1180px]로 전체 폭을 제한하고, justify-center/mx-auto는
+            쓰지 않아 사이드바에 바로 붙어 시작하고 오른쪽에만 여백이
+            남도록 합니다. */}
+        <div className="flex flex-1 bg-[#eef2fb]">
+          <div className="flex w-full max-w-[1180px] flex-1 px-10 py-8">
           {/* 좌: 대화 — 원본 목업과 동일하게 말풍선 글씨 크기를 살짝 줄여
-              (18px → 15px) 화면에 더 자연스럽게 맞도록 합니다. */}
-          <div className="flex w-[560px] shrink-0 flex-col">
+              (18px → 15px) 화면에 더 자연스럽게 맞도록 합니다. 원본처럼
+              우측 패널과의 경계에 세로 구분선을 둡니다. */}
+          <div className="flex w-[560px] shrink-0 flex-col border-r border-line pr-8">
             <h2 className="text-[19px] font-bold text-navy-deep">대화</h2>
 
             <div className="mt-4 flex flex-1 flex-col gap-3">
@@ -134,7 +141,7 @@ export default function AiChatPage() {
 
           {/* 우: 실시간 반영되는 일정 · 지도 — 왼쪽 대화 영역을 넓힌 만큼
               박스 높이를 더 줄여서 전체적으로 작아 보이도록 합니다. */}
-          <div className="flex flex-1 flex-col">
+          <div className="flex flex-1 flex-col pl-8">
             <h2 className="text-[18px] font-bold text-navy-deep">실시간 반영되는 일정 · 지도</h2>
 
             <div className="mt-4 flex h-[260px] shrink-0 flex-col items-center justify-center rounded-2xl bg-[#e4e9f4] text-center">
@@ -158,6 +165,7 @@ export default function AiChatPage() {
             >
               변경된 일정 확인하기
             </button>
+          </div>
           </div>
         </div>
       </div>

@@ -116,36 +116,19 @@ export default function SupportPage() {
 
         {/* ---------- PC (≥1024px): 좌측 정렬, 넉넉한 폰트/여백의 전용 레이아웃 ----------
             모바일 카드를 그대로 늘려 쓰면 여백만 커 보이므로, 프로필 수정(PC)/설정(PC)
-            화면과 같은 톤으로 별도 구성합니다. 자주 묻는 질문은 실제로 클릭하면
-            펼쳐지며 답변이 나오고, 1:1 문의하기는 InquiryModal을 실제로 엽니다. */}
+            화면과 같은 톤으로 별도 구성합니다. PC에서는 자주 묻는 질문을 클릭해서
+            펼치는 대신, 모든 질문의 답변이 한꺼번에 바로 보이도록 펼쳐서 보여줍니다.
+            1:1 문의하기는 InquiryModal을 실제로 엽니다. */}
         <div className="hidden lg:flex lg:w-full lg:max-w-[740px] lg:flex-col lg:gap-8 lg:pb-10">
           <div>
             <div className="mb-3.5 text-[17px] font-extrabold text-navy-deep">자주 묻는 질문</div>
             <div className="overflow-hidden rounded-[18px] border border-line bg-white shadow-[var(--shadow-card)]">
-              {FAQS.map((f, i) => {
-                const open = openId === f.id;
-                return (
-                  <div key={f.id} className={i < FAQS.length - 1 ? "border-b border-line" : ""}>
-                    <button
-                      type="button"
-                      onClick={() => setOpenId(open ? null : f.id)}
-                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-navy-deep transition hover:bg-[#f7f9fd]"
-                    >
-                      {f.q}
-                      <Icon
-                        name="chevronRight"
-                        size={18}
-                        className={`shrink-0 text-muted transition-transform ${
-                          open ? "rotate-90" : ""
-                        }`}
-                      />
-                    </button>
-                    {open && (
-                      <div className="px-6 pb-6 text-[13.5px] leading-6 text-muted">{f.a}</div>
-                    )}
-                  </div>
-                );
-              })}
+              {FAQS.map((f, i) => (
+                <div key={f.id} className={i < FAQS.length - 1 ? "border-b border-line" : ""}>
+                  <div className="px-6 pt-5 text-[15px] font-bold text-navy-deep">{f.q}</div>
+                  <div className="px-6 pb-6 pt-2 text-[13.5px] leading-6 text-muted">{f.a}</div>
+                </div>
+              ))}
             </div>
           </div>
 
