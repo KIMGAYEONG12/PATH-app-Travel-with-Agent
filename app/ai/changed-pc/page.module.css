@@ -1,0 +1,206 @@
+/* ------------------------------------------------------------------
+   변경된 일정 — PC 전용 화면 (지도 없는 버전)
+   ------------------------------------------------------------------
+   ※ 모바일/태블릿을 함께 대응하는 반응형 화면이 아닙니다. 항상 고정된
+      데스크톱(사이드바 + 본문) 레이아웃으로만 렌더링됩니다. 화면이
+      좁아져도 사이드바가 숨겨지거나 하단 탭바로 바뀌지 않습니다.
+   ------------------------------------------------------------------- */
+
+.page {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  width: 100%;
+  background: #eef2fb;
+}
+
+/* ---------- 좌측 사이드바 ---------- */
+.sidebar {
+  flex: 0 0 240px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  padding: 32px 24px;
+}
+
+.logo {
+  display: block;
+  width: 108px;
+  margin-bottom: 40px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.navItem:hover {
+  color: var(--navy);
+}
+
+.navItemFixed {
+  color: var(--navy);
+}
+
+.navItemActive {
+  color: var(--navy);
+}
+
+.navIndicator {
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  border-radius: 0 6px 6px 0;
+  background: var(--navy);
+}
+
+.navIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ---------- 우측 본문 ---------- */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.backBtn:hover {
+  background: rgba(30, 39, 97, 0.06);
+}
+
+.backIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy-dark);
+}
+
+.body {
+  flex: 1;
+  padding: 36px 40px 80px;
+}
+
+.content {
+  width: 100%;
+  max-width: 640px;
+}
+
+.banner {
+  background: var(--orange-soft);
+  color: #f97316;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 18px 16px;
+  border-radius: 14px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.compareRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.compareCol {
+  flex: 1;
+}
+
+.compareLabel {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.compareLabelAfter {
+  color: #f97316;
+}
+
+.compareCard {
+  padding: 18px;
+}
+
+.compareCardAfter {
+  border: 1.5px solid var(--orange);
+}
+
+.fieldLabel {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.fieldLabelAfter {
+  color: #f97316;
+}
+
+.fieldValue {
+  font-weight: 800;
+  font-size: 16px;
+  margin-top: 4px;
+  color: var(--navy);
+}
+
+.fieldValueSpacer {
+  margin-top: 16px;
+}
+
+.dateCard {
+  padding: 18px;
+}
+
+.dateLabel {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.confirmBtn {
+  margin-top: 24px;
+}

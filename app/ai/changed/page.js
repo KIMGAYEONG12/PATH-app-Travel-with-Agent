@@ -2,28 +2,10 @@
 
 import Link from "next/link";
 import Header from "@/components/Header";
-import Icon from "@/components/Icon";
 import Card from "@/components/Card";
 import Timeline from "@/components/Timeline";
 import Button from "@/components/Button";
-import MapArt from "@/components/MapArt";
 import { changedSchedule } from "@/lib/mockData";
-
-const markers = [
-  { x: 90, y: 150, label: "신주쿠", color: "#2f6fed" },
-  { x: 250, y: 100, label: "센소지", color: "#f4a268" },
-  { x: 190, y: 230, label: "스카이트리", color: "#24a36a" },
-];
-const paths = [
-  [
-    { x: 90, y: 150 },
-    { x: 190, y: 230 },
-  ],
-  [
-    { x: 250, y: 100 },
-    { x: 190, y: 230 },
-  ],
-];
 
 function BeforeAfter({ summary, before, after }) {
   return (
@@ -70,51 +52,20 @@ function BeforeAfter({ summary, before, after }) {
 export default function AiChangedPage() {
   const { summary, before, after, date, items } = changedSchedule;
   return (
-    <>
-      {/* ---------- 모바일: 기존 단일 컬럼 ---------- */}
-      <div className="screen-scroll no-tab flex flex-col lg:hidden">
-        <Header title="변경된 일정" backHref="/ai/chat" />
-        <div className="container">
-          <BeforeAfter summary={summary} before={before} after={after} />
-          <Card>
-            <div style={{ fontWeight: 800, marginBottom: 14 }}>{date}</div>
-            <Timeline items={items} />
-          </Card>
-          <Link href="/ai/result">
-            <Button variant="primary" style={{ marginTop: 20 }}>
-              변경된 일정 확인하기
-            </Button>
-          </Link>
-        </div>
+    <div className="screen-scroll no-tab flex flex-col">
+      <Header title="변경된 일정" backHref="/ai/chat" />
+      <div className="container">
+        <BeforeAfter summary={summary} before={before} after={after} />
+        <Card>
+          <div style={{ fontWeight: 800, marginBottom: 14 }}>{date}</div>
+          <Timeline items={items} />
+        </Card>
+        <Link href="/ai/result">
+          <Button variant="primary" style={{ marginTop: 20 }}>
+            변경된 일정 확인하기
+          </Button>
+        </Link>
       </div>
-
-      {/* ---------- PC: 좌측 변경 전/후 비교 + 타임라인, 우측 지도 미리보기
-          (프로토타입 "PC 지도" / "PC AI와 대화하기"와 동일한 톤의 2단 구성) ---------- */}
-      <div className="hidden min-w-0 flex-1 flex-col lg:flex">
-        <header className="flex shrink-0 items-center gap-3 border-b border-line px-10 py-6">
-          <Link href="/ai/chat" className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-[#eef2fb]">
-            <Icon name="chevronRight" size={18} className="rotate-180" />
-          </Link>
-          <h1 className="text-[23px] font-bold text-navy-deep">변경된 일정</h1>
-        </header>
-        <div className="flex flex-1 bg-[#eef2fb]">
-          <div className="flex w-[460px] shrink-0 flex-col gap-5 px-10 py-8">
-            <BeforeAfter summary={summary} before={before} after={after} />
-            <div className="rounded-3xl border border-line bg-white p-6">
-              <div style={{ fontWeight: 800, marginBottom: 14 }}>{date}</div>
-              <Timeline items={items} />
-            </div>
-            <Link href="/ai/result">
-              <Button variant="primary">변경된 일정 확인하기</Button>
-            </Link>
-          </div>
-          <div className="flex flex-1 py-8 pl-14 pr-10">
-            <div className="relative flex-1 overflow-hidden rounded-3xl">
-              <MapArt markers={markers} paths={paths} fill />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }

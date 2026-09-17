@@ -107,8 +107,8 @@ export default function AiRoutePage() {
                 <RouteDetailCard />
               </div>
             </div>
-            <div className="flex flex-1 py-8 pl-14 pr-8">
-              <div className="relative flex-1 overflow-hidden rounded-3xl">
+            <div className="flex flex-1 items-center justify-center py-8 pl-14 pr-8">
+              <div className="relative aspect-[9/8] w-full max-w-[680px] overflow-hidden rounded-3xl">
                 <MapArt markers={markers} paths={paths} fill />
               </div>
             </div>

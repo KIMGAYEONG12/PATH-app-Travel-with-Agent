@@ -31,10 +31,11 @@ export default function MapArt({
   const vLines = Array.from({ length: cols + 1 }, (_, i) => vx + (vw / cols) * i);
   const hLines = Array.from({ length: rows + 1 }, (_, i) => vy + (vh / rows) * i);
 
-  const gridStroke = vw * 0.0028;
-  const pathStroke = vw * 0.0083;
-  const markerR = vw * 0.0194;
-  const markerStroke = vw * 0.0069;
+  // 화면(스크린) 기준 고정 픽셀 두께입니다. vector-effect="non-scaling-stroke"를
+  // 함께 써서, 컨테이너가 커져 SVG가 확대되어도 선 두께가 같이 뚱뚱해지지
+  // 않고 항상 동일한 두께로 보이게 합니다.
+  const gridStroke = 1;
+  const pathStroke = 4;
 
   return (
     <div
@@ -61,10 +62,28 @@ export default function MapArt({
       <svg width="100%" height="100%" viewBox={viewBox} preserveAspectRatio={preserveAspectRatio}>
         <rect x={vx} y={vy} width={vw} height={vh} fill="#dfeee3" />
         {vLines.map((x) => (
-          <line key={`v${x}`} x1={x} y1={vy} x2={x} y2={vy + vh} stroke="#cfe3d5" strokeWidth={gridStroke} />
+          <line
+            key={`v${x}`}
+            x1={x}
+            y1={vy}
+            x2={x}
+            y2={vy + vh}
+            stroke="#cfe3d5"
+            strokeWidth={gridStroke}
+            vectorEffect="non-scaling-stroke"
+          />
         ))}
         {hLines.map((y) => (
-          <line key={`h${y}`} x1={vx} y1={y} x2={vx + vw} y2={y} stroke="#cfe3d5" strokeWidth={gridStroke} />
+          <line
+            key={`h${y}`}
+            x1={vx}
+            y1={y}
+            x2={vx + vw}
+            y2={y}
+            stroke="#cfe3d5"
+            strokeWidth={gridStroke}
+            vectorEffect="non-scaling-stroke"
+          />
         ))}
         {parks.map((p, i) => (
           <rect
@@ -86,14 +105,29 @@ export default function MapArt({
             strokeWidth={pathStroke}
             strokeLinecap="round"
             strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
           />
         ))}
-        {markers.map((m, i) => (
-          <g key={i} transform={`translate(${m.x} ${m.y})`}>
-            <circle r={markerR} fill={m.color || "#1e2761"} stroke="#fff" strokeWidth={markerStroke} />
-          </g>
-        ))}
       </svg>
+      {/* 마커 원 + 라벨을 모두 화면 기준 고정 픽셀 크기의 HTML 요소로 그립니다.
+          (위치만 %로 지도 좌표를 따라가고, 크기는 컨테이너가 커져도 항상 동일) */}
+      {markers.map((m, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            left: `${((m.x - vx) / vw) * 100}%`,
+            top: `${((m.y - vy) / vh) * 100}%`,
+            transform: "translate(-50%, -50%)",
+            width: 16,
+            height: 16,
+            borderRadius: "50%",
+            background: m.color || "#1e2761",
+            border: "2.5px solid #fff",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.18)",
+          }}
+        />
+      ))}
       {markers.map((m, i) => (
         <div
           key={i}
